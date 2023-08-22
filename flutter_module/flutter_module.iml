@@ -9,6 +9,9 @@
       <excludeFolder url="file://$MODULE_DIR$/.idea" />
       <excludeFolder url="file://$MODULE_DIR$/build" />
       <excludeFolder url="file://$MODULE_DIR$/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/lib/petstore/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/lib/petstore/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/lib/petstore/build" />
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Dart SDK" level="project" />

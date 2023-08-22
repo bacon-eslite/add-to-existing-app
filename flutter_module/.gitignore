@@ -1,3 +1,5 @@
+# See https://dart.dev/guides/libraries/private-files
+
 .DS_Store
 .dart_tool/
 
@@ -48,3 +50,10 @@ app.*.symbols
 
 # Obfuscation related
 app.*.map.json
+
+doc/api/
+
+# IntelliJ
+*.iml
+*.ipr
+*.iws

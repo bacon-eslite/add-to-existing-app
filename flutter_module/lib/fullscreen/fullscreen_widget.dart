@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_module/api_settings.dart';
+import 'package:petstore_api/api.dart';
 
 class FullScreenWidget extends StatefulWidget {
   const FullScreenWidget({super.key});
