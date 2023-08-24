@@ -17,7 +17,8 @@ dependencies:
   json_serializable: ^6.7.1
 
 #  state management:
-  riverpod: ^2.3.7
+  riverpod_annotation: ^2.1.2
+  flutter_riverpod: ^2.3.7
 
 
 #  data layer:
@@ -33,6 +34,7 @@ dev_dependencies:
   flutter_lints: ^2.0.0
   build_runner: ^2.1.4
   openapi_generator: ^4.12.1
+  riverpod_generator: ^2.2.6
 
 
 flutter:
