@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_module/domain/fullscreen/routes.dart';
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, this.title}) : super(key: key);
+class CounterPage extends StatefulWidget {
+  const CounterPage({Key? key, this.title}) : super(key: key);
 
   final String? title;
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<CounterPage> createState() => _CounterPageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _CounterPageState extends State<CounterPage> {
   int _counter = 0;
 
   void _incrementCounter() {
@@ -24,13 +23,6 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title ?? 'No title'),
-        actions: [
-          TextButton(
-              style: TextButton.styleFrom(foregroundColor: Colors.white),
-              onPressed: () =>
-                  Navigator.pushNamed(context, FullscreenRoutes.fullscreen),
-              child: const Text('Fullscreen'))
-        ],
       ),
       body: Center(
         child: Column(

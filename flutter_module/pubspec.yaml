@@ -22,10 +22,10 @@ dependencies:
 
 #  data layer:
   petstore_api:
-    path: api/petstore
+    path: ./api/petstore
 
   hello:
-    path: api/hello
+    path: ./api/hello
 
 dev_dependencies:
   flutter_test:
