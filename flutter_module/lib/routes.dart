@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_module/fragment/routes.dart';
-import 'package:flutter_module/fullscreen/routes.dart';
-import 'package:flutter_module/home/routes.dart';
+import 'package:flutter_module/domain/fragment/routes.dart';
+import 'package:flutter_module/domain/fullscreen/routes.dart';
+import 'package:flutter_module/domain/home/routes.dart';
 
 class AppRoutes {
   static AppRoutes? _instance;
@@ -15,7 +15,7 @@ class AppRoutes {
 
   Map<String, Route> routes(RouteSettings settings) => {
         ...HomeRoutes().routes(settings),
-        ...FullscreenRoute().routes(settings),
+        ...FullscreenRoutes().routes(settings),
         ...FragmentRoutes().routes,
       };
 

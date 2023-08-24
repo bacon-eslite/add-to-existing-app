@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_module/home/home_widget.dart';
+import 'package:flutter_module/domain/home/home_widget.dart';
 
 class HomeRoutes {
   HomeRoutes._();

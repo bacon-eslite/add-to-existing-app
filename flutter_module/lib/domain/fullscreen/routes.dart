@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_module/fullscreen/fullscreen_widget.dart';
+import 'package:flutter_module/domain/fullscreen/fullscreen_widget.dart';
 
-class FullscreenRoute {
-  FullscreenRoute._();
+class FullscreenRoutes {
+  FullscreenRoutes._();
 
-  static FullscreenRoute? _instance;
+  static FullscreenRoutes? _instance;
 
-  factory FullscreenRoute() => _instance ??= FullscreenRoute._();
+  factory FullscreenRoutes() => _instance ??= FullscreenRoutes._();
 
   Map<String, Route> routes(RouteSettings settings) => {
     fullscreen:

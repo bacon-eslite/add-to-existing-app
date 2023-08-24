@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_module/fragment/fragment_widget.dart';
+import 'package:flutter_module/domain/fragment/fragment_widget.dart';
 
 class FragmentRoutes {
   static FragmentRoutes? _instance;

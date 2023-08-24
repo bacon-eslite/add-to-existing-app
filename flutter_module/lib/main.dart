@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_module/home/routes.dart';
+import 'package:flutter_module/domain/home/routes.dart';
 import 'package:flutter_module/routes.dart';
 
 
