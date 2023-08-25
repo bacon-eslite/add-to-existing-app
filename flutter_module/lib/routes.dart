@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_module/domain/hello/routes.dart';
 import 'package:flutter_module/domain/home/routes.dart';
+import 'package:flutter_module/domain/user/routes.dart';
 
 class AppRoutes {
   static AppRoutes? _instance;
@@ -15,6 +16,7 @@ class AppRoutes {
   Map<String, Route> routes(RouteSettings settings) => {
         ...HomeRoutes().routes(settings),
         ...HelloRoutes().routes(settings),
+        ...UserRoutes().routes(settings),
       };
 
   Route? onGenerateRoute(RouteSettings settings) =>
