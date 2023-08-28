@@ -15,9 +15,9 @@
       <excludeFolder url="file://$MODULE_DIR$/api/petstore/.dart_tool" />
       <excludeFolder url="file://$MODULE_DIR$/api/petstore/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/api/petstore/build" />
-      <excludeFolder url="file://$MODULE_DIR$/lib/domain/petstore/.dart_tool" />
-      <excludeFolder url="file://$MODULE_DIR$/lib/domain/petstore/.pub" />
-      <excludeFolder url="file://$MODULE_DIR$/lib/domain/petstore/build" />
+      <excludeFolder url="file://$MODULE_DIR$/lib/feature/petstore/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/lib/feature/petstore/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/lib/feature/petstore/build" />
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Dart SDK" level="project" />

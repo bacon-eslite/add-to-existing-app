@@ -22,12 +22,11 @@ dependencies:
   flutter_riverpod: ^2.3.7
 
 
-  equatable: ^2.0.5
-
 #  utility:
   random_x: ^0.3.1
   logger: ^2.0.1
   intl: ^0.17.0
+  equatable: ^2.0.5
 
 #  data layer:
   petstore_api:
