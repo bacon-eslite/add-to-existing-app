@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_module/feature/user/model/model.dart';
 import 'package:flutter_module/common/extension/extension.dart';
+import 'package:flutter_module/feature/hello/model/model.dart';
 
 class UserDetailPage extends StatelessWidget {
   final User user;

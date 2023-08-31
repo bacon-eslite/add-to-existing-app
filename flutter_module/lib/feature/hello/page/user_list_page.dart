@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_module/feature/user/settings/settings.dart';
-import 'package:flutter_module/feature/user/model/model.dart';
-import 'package:flutter_module/feature/user/provider/provider.dart';
+import 'package:flutter_module/feature/hello/config/config.dart';
+import 'package:flutter_module/feature/hello/provider/provider.dart';
+import 'package:flutter_module/feature/hello/view/view.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:random_x/random_x.dart';
 
 class UserListPage extends ConsumerWidget {
   const UserListPage({super.key});
@@ -49,34 +48,11 @@ class UserList extends ConsumerWidget {
             icon: const Icon(Icons.delete),
           ),
           onTap: () => Navigator.of(context).pushNamed(
-            UserRoutes.userDetail,
+            HelloRoutes.userDetail,
             arguments: UserDetailArguments(user),
           ),
         );
       },
-    );
-  }
-}
-
-class UserAddButton extends ConsumerWidget {
-  const UserAddButton({super.key});
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    return ElevatedButton(
-      onPressed: () {
-        ref.read(userListProvider.notifier).add(
-              User(
-                id: ref.watch(userListProvider).length + 1,
-                name: RndX.generateName(),
-                email: RndX.generateEmail(),
-                phone: RndX.generatePhoneNumber().toString(),
-                createdAt: DateTime.now(),
-                createdAtUtc: DateTime.now().toUtc(),
-              ),
-            );
-      },
-      child: const Text('Add User'),
     );
   }
 }

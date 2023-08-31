@@ -1,4 +1,4 @@
-import 'package:flutter_module/feature/user/model/user.dart';
+import 'package:flutter_module/feature/hello/model/user.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'user.g.dart';
