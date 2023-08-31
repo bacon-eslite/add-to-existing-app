@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_module/feature/hello/hello.dart';
-import 'package:flutter_module/feature/home/home.dart';
-import 'package:flutter_module/feature/user/user.dart';
+import 'package:flutter_module/feature/feature.dart';
+import 'package:petstore_api/api.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -27,7 +26,10 @@ class HomeMenu extends StatelessWidget {
       children: [
         ListTile(
           title: const Text('Counter'),
-          onTap: () => Navigator.pushNamed(context, HomeRoutes.counter),
+          onTap: () {
+            StoreApi api = StoreApi();
+            Navigator.pushNamed(context, HomeRoutes.counter);
+          },
         ),
         ListTile(
           title: const Text('Full Screen'),
@@ -39,7 +41,7 @@ class HomeMenu extends StatelessWidget {
         ),
         ListTile(
           title: const Text('User List'),
-          onTap: () => Navigator.pushNamed(context, UserRoutes.userList),
+          onTap: () => Navigator.pushNamed(context, HelloRoutes.userList),
         ),
       ],
     );

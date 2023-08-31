@@ -1,3 +1,3 @@
-export 'view/view.dart';
+export 'config/config.dart';
 export 'page/page.dart';
-export 'settings/settings.dart';
+export 'view/view.dart';

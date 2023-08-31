@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_module/common/util/view/snackbar.dart';
+import 'package:hello/hello.dart';
+import 'package:random_x/random_x.dart';
 
 class FullScreenWidget extends StatefulWidget {
   const FullScreenWidget({super.key});
@@ -29,6 +32,12 @@ class _FullScreenWidgetState extends State<FullScreenWidget> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Full Screen'),
+        actions: [
+          IconButton(
+            onPressed: () => showSnackBar(context, HelloApi().sayHello(name: RndX.generateName())),
+            icon: const Icon(Icons.published_with_changes_rounded),
+          )
+        ],
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,

@@ -14,7 +14,6 @@ class AppRoutes {
   Map<String, Route> routes(RouteSettings settings) => {
         ...HomeRoutes().routes(settings),
         ...HelloRoutes().routes(settings),
-        ...UserRoutes().routes(settings),
       };
 
   Route? onGenerateRoute(RouteSettings settings) =>
