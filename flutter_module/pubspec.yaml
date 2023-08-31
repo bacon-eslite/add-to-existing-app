@@ -27,6 +27,7 @@ dependencies:
   logger: ^2.0.1
   intl: ^0.17.0
   equatable: ^2.0.5
+  collection: ^1.17.1
 
 #  data layer:
   petstore_api:
