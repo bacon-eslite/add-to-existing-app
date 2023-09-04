@@ -1,3 +1,4 @@
+import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'rsp_get_geocoding_location.g.dart';
@@ -17,7 +18,7 @@ class LocationList {
 }
 
 @JsonSerializable(explicitToJson: true, fieldRename: FieldRename.snake)
-class Location {
+class Location extends Equatable {
   final int? id;
   final String? name;
   final double? latitude;
@@ -38,7 +39,7 @@ class Location {
   final String? admin3;
   final String? admin4;
 
-  Location(
+  const Location(
       {this.id,
       this.name,
       this.latitude,
@@ -63,4 +64,14 @@ class Location {
       _$LocationFromJson(json);
 
   Map<String, dynamic> toJson() => _$LocationToJson(this);
+
+  @override
+  List<Object?> get props => [
+        id,
+        name,
+        latitude,
+        longitude,
+        countryCode,
+        timezone,
+      ];
 }

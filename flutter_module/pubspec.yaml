@@ -28,6 +28,7 @@ dependencies:
   intl: ^0.17.0
   equatable: ^2.0.5
   collection: ^1.17.1
+  tuple: ^2.0.2
 
 #  data layer:
   petstore_api:
@@ -35,6 +36,9 @@ dependencies:
 
   hello:
     path: ./api/hello
+
+  weather_api:
+    path: ./api/weather_api
 
 dev_dependencies:
   flutter_test:

@@ -1,42 +1,57 @@
-import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'rsp_get_weather_forecast.g.dart';
 
 @JsonSerializable(explicitToJson: true, fieldRename: FieldRename.snake)
-class WeatherForecast extends Equatable {
-  final double? latitude;
-  final double? longitude;
+class Weather {
+  double? latitude;
+  double? longitude;
   @JsonKey(name: 'generationtime_ms')
-  final double? generationTime;
-  final int? utcOffsetSeconds;
-  final String? timezone;
-  final String? timezoneAbbreviation;
-  final int? elevation;
+  double? generationTime;
+  int? utcOffsetSeconds;
+  String? timezone;
+  String? timezoneAbbreviation;
+  int? elevation;
+  CurrentWeather? currentWeather;
 
-  const WeatherForecast({
-    this.latitude,
-    this.longitude,
-    this.generationTime,
-    this.utcOffsetSeconds,
-    this.timezone,
-    this.timezoneAbbreviation,
-    this.elevation,
-  });
+  Weather(
+      {this.latitude,
+      this.longitude,
+      this.generationTime,
+      this.utcOffsetSeconds,
+      this.timezone,
+      this.timezoneAbbreviation,
+      this.elevation,
+      this.currentWeather});
 
-  factory WeatherForecast.fromJson(Map<String, dynamic> json) =>
-      _$WeatherForecastFromJson(json);
+  factory Weather.fromJson(Map<String, dynamic> json) =>
+      _$WeatherFromJson(json);
 
-  Map<String, dynamic> toJson() => _$WeatherForecastToJson(this);
+  Map<String, dynamic> toJson() => _$WeatherToJson(this);
+}
 
-  @override
-  List<Object?> get props => [
-        latitude,
-        longitude,
-        generationTime,
-        utcOffsetSeconds,
-        timezone,
-        timezoneAbbreviation,
-        elevation,
-      ];
+@JsonSerializable(explicitToJson: true, fieldRename: FieldRename.snake)
+class CurrentWeather {
+  double? temperature;
+  @JsonKey(name: 'windspeed')
+  double? windSpeed;
+  @JsonKey(name: 'winddirection')
+  int? windDirection;
+  @JsonKey(name: 'weathercode')
+  int? weatherCode;
+  int? isDay;
+  String? time;
+
+  CurrentWeather(
+      {this.temperature,
+      this.windSpeed,
+      this.windDirection,
+      this.weatherCode,
+      this.isDay,
+      this.time});
+
+  factory CurrentWeather.fromJson(Map<String, dynamic> json) =>
+      _$CurrentWeatherFromJson(json);
+
+  Map<String, dynamic> toJson() => _$CurrentWeatherToJson(this);
 }

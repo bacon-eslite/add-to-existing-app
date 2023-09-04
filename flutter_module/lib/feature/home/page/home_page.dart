@@ -43,6 +43,10 @@ class HomeMenu extends StatelessWidget {
           title: const Text('User List'),
           onTap: () => Navigator.pushNamed(context, HelloRoutes.userList),
         ),
+        ListTile(
+          title: const Text('Weather'),
+          onTap: () => Navigator.pushNamed(context, WeatherRoutes.weather),
+        ),
       ],
     );
   }

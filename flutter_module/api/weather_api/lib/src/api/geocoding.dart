@@ -1,6 +1,10 @@
+import 'dart:io';
+
+import 'package:tuple/tuple.dart';
 import 'package:weather_api/src/api_client.dart';
+import 'package:weather_api/src/api_exception.dart';
 import 'package:weather_api/src/config/config.dart';
-import 'package:weather_api/src/model/req_get_geocoding_location.dart';
+import 'package:weather_api/src/model/model.dart';
 
 class GeocodingApi {
   static GeocodingApi? _instance;
@@ -14,15 +18,21 @@ class GeocodingApi {
   factory GeocodingApi({GeocodingApiClient? client}) =>
       _instance ??= GeocodingApi._(client: client);
 
-  Future<dynamic> getCityGeoData({
+  Future<Tuple2<LocationList?, HttpError?>> getCityGeoData({
     required String city,
   }) async {
-    final response = await geocodingApiClient.dio.get(
+    final resp = await geocodingApiClient.dio.get(
       GeocodingRoutes.searchCity,
       queryParameters: ReqGetGeocodingLocation(
         name: city,
       ).queryParams,
     );
-    return response.data;
+    return switch (resp.statusCode) {
+      HttpStatus.ok => Tuple2(LocationList.fromJson(resp.data), null),
+      _ => Tuple2(
+          null,
+          HttpError(resp.statusCode ?? 0, resp.statusMessage ?? ''),
+        )
+    };
   }
 }
