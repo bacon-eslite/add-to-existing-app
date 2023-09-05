@@ -29,6 +29,7 @@ class WeatherApi {
         longitude: longitude,
       ).queryParams,
     );
+    print("resp: $resp");
     return switch (resp.statusCode) {
       HttpStatus.ok => Tuple2(Weather.fromJson(resp.data), null),
       _ => Tuple2(

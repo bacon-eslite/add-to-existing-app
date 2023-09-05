@@ -24,7 +24,7 @@ Location _$LocationFromJson(Map<String, dynamic> json) => Location(
       name: json['name'] as String?,
       latitude: (json['latitude'] as num?)?.toDouble(),
       longitude: (json['longitude'] as num?)?.toDouble(),
-      elevation: json['elevation'] as int?,
+      elevation: json['elevation'] as double?,
       featureCode: json['feature_code'] as String?,
       countryCode: json['country_code'] as String?,
       admin1Id: json['admin1_id'] as int?,

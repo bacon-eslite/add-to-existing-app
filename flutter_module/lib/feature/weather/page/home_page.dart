@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_module/common/util/geo_location.dart';
+import 'package:flutter_module/feature/feature.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-import '../config/config.dart';
 
 class WeatherHomePage extends ConsumerWidget {
   const WeatherHomePage({Key? key}) : super(key: key);
@@ -20,8 +20,35 @@ class WeatherHomePage extends ConsumerWidget {
           ),
           ListTile(
             title: const Text('Current weather'),
-            onTap: () {
-              Navigator.pushNamed(context, WeatherRoutes.current);
+            onTap: () async {
+              final permission = await GeoLocation().isPermissionGranted;
+              if (!permission) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: Text('Location permission is not granted'),
+                  ),
+                );
+                return;
+              }
+              final location = await GeoLocation().getCurrentPosition();
+              if (location == null) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: Text('Location is not available'),
+                  ),
+                );
+                return;
+              }
+              Navigator.pushNamed(
+                context,
+                WeatherRoutes.current,
+                arguments: Location(
+                  name: 'Current location',
+                  city: 'Current city',
+                  latitude: location.latitude,
+                  longitude: location.longitude,
+                ),
+              );
             },
           ),
         ],

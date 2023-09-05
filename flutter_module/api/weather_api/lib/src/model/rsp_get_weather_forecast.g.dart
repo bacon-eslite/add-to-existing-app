@@ -13,7 +13,7 @@ Weather _$WeatherFromJson(Map<String, dynamic> json) => Weather(
       utcOffsetSeconds: json['utc_offset_seconds'] as int?,
       timezone: json['timezone'] as String?,
       timezoneAbbreviation: json['timezone_abbreviation'] as String?,
-      elevation: json['elevation'] as int?,
+      elevation: json['elevation'] as double?,
       currentWeather: json['current_weather'] == null
           ? null
           : CurrentWeather.fromJson(
