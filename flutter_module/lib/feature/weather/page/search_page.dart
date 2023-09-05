@@ -24,7 +24,10 @@ class SearchPage extends ConsumerWidget {
       body: const SafeArea(
         child: Column(
           children: [
-            CitySearchBar(),
+            Padding(
+              padding: EdgeInsets.all(8.0),
+              child: CitySearchBar(),
+            ),
             Expanded(child: CityList()),
           ],
         ),

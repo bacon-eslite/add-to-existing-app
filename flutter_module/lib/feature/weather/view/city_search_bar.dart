@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_module/common/style/style.dart';
 import 'package:flutter_module/feature/weather/provider/location.dart';
-import 'package:flutter_module/feature/weather/service/geocoding_service.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class CitySearchBar extends ConsumerStatefulWidget {
@@ -18,6 +18,7 @@ class _CitySearchBarState extends ConsumerState<CitySearchBar> {
   @override
   Widget build(BuildContext context) {
     return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Expanded(
           child: Form(
@@ -35,25 +36,9 @@ class _CitySearchBarState extends ConsumerState<CitySearchBar> {
                   available = _form.currentState?.validate() ?? false;
                 });
               },
-              decoration: const InputDecoration(
+              decoration: DecorationStyles.textFieldDecorationStyle(
                 labelText: 'City',
                 hintText: 'Enter a city',
-                errorText: 'Invalid city',
-                border: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.black),
-                ),
-                enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.green),
-                ),
-                disabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.grey),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.blue),
-                ),
-                errorBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.red),
-                ),
               ),
             ),
           ),
@@ -61,9 +46,9 @@ class _CitySearchBarState extends ConsumerState<CitySearchBar> {
         IconButton(
           onPressed: available
               ? () async {
-                  final locations = await GeocodingService()
-                      .getLocations(city: _controller.text);
-                  ref.read(locationListProvider.notifier).set(locations ?? []);
+                  ref
+                      .read(locationListProvider.notifier)
+                      .loadLocations(_controller.text);
                 }
               : null,
           icon: const Icon(Icons.search),

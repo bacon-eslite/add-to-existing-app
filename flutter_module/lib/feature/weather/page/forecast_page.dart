@@ -20,7 +20,6 @@ class ForecastPageState extends ConsumerState<ForecastPage> {
   @override
   void initState() {
     super.initState();
-
     ref.read(forecastPodProvider.notifier).loadForecast(
           widget.location.latitude!,
           widget.location.longitude!,

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_module/feature/weather/config/config.dart';
 import 'package:flutter_module/feature/weather/model/model.dart';
-import 'package:flutter_module/feature/weather/provider/provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class CityTile extends ConsumerWidget {
@@ -16,11 +15,6 @@ class CityTile extends ConsumerWidget {
       subtitle: Text(location.city ?? ''),
       onTap: () async {
         if (location.latitude == null || location.longitude == null) return;
-        await ref.read(forecastPodProvider.notifier).loadForecast(
-              location.latitude!,
-              location.longitude!,
-            );
-        if (!context.mounted) return;
         Navigator.pushNamed(
           context,
           WeatherRoutes.current,
