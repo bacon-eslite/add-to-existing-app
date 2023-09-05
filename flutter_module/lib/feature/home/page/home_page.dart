@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_module/feature/feature.dart';
-import 'package:petstore_api/api.dart';
+import 'package:flutter_module/service/petstore/petstore.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -10,7 +10,6 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Flutter Demo'),
-        actions: [],
       ),
       body: const HomeMenu(),
     );
@@ -27,7 +26,8 @@ class HomeMenu extends StatelessWidget {
         ListTile(
           title: const Text('Counter'),
           onTap: () {
-            StoreApi api = StoreApi();
+            PetService().getPetById(1);
+
             Navigator.pushNamed(context, HomeRoutes.counter);
           },
         ),
@@ -42,6 +42,10 @@ class HomeMenu extends StatelessWidget {
         ListTile(
           title: const Text('User List'),
           onTap: () => Navigator.pushNamed(context, HelloRoutes.userList),
+        ),
+        ListTile(
+          title: const Text('Weather'),
+          onTap: () => Navigator.pushNamed(context, WeatherRoutes.weather),
         ),
       ],
     );

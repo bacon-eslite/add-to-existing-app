@@ -2,7 +2,7 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter_module/common/util/util.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-part '../../hello/model/user.g.dart';
+part 'user.g.dart';
 
 @JsonSerializable(explicitToJson: true, fieldRename: FieldRename.snake)
 class User extends Equatable {

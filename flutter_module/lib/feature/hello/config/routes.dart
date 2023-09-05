@@ -23,9 +23,8 @@ class HelloRoutes {
         }),
       };
 
-  static String fragment = '/fragment';
-  static String fullscreen = '/fullscreen';
-
+  static const String fragment = '/fragment';
+  static const String fullscreen = '/fullscreen';
   static const String userList = '/users';
   static const String userDetail = '/users/detail';
 }
