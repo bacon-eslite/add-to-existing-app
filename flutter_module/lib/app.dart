@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       initialRoute: HomeRoutes.home,
-      theme: ThemeData(
+      theme: Theme.of(context).copyWith(
         colorScheme: ColorScheme.fromSeed(seedColor: AppColors.primary),
         textTheme: TextTheme(
           displayLarge: TextStyles.displayLarge(),
