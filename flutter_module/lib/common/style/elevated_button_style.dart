@@ -1,17 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_module/common/style/app_color.dart';
 
-class ElevatedButtonStyle {
-  static ButtonStyle normal({double? double}) => ElevatedButton.styleFrom(
-        backgroundColor: AppColors.normal,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(double ?? 32),
-          side: const BorderSide(color: AppColors.normal),
-        ),
-      );
-
+class ElevatedButtonStyles {
   static ButtonStyle primary({double? radius}) => ElevatedButton.styleFrom(
         backgroundColor: AppColors.primary,
+        foregroundColor: AppColors.white,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(radius ?? 32),
           side: const BorderSide(color: AppColors.primary),
@@ -20,6 +13,7 @@ class ElevatedButtonStyle {
 
   static ButtonStyle success({double? radius}) => ElevatedButton.styleFrom(
         backgroundColor: AppColors.success,
+        foregroundColor: AppColors.white,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(radius ?? 32),
           side: const BorderSide(color: AppColors.success),
@@ -28,6 +22,7 @@ class ElevatedButtonStyle {
 
   static ButtonStyle info({double? radius}) => ElevatedButton.styleFrom(
         backgroundColor: AppColors.info,
+        foregroundColor: AppColors.white,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(radius ?? 32),
           side: const BorderSide(color: AppColors.info),
@@ -36,6 +31,7 @@ class ElevatedButtonStyle {
 
   static ButtonStyle warning({double? radius}) => ElevatedButton.styleFrom(
         backgroundColor: AppColors.warning,
+        foregroundColor: AppColors.white,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(radius ?? 32),
           side: const BorderSide(color: AppColors.warning),
@@ -44,6 +40,7 @@ class ElevatedButtonStyle {
 
   static ButtonStyle danger({double? radius}) => ElevatedButton.styleFrom(
         backgroundColor: AppColors.danger,
+        foregroundColor: AppColors.white,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(radius ?? 32),
           side: const BorderSide(color: AppColors.danger),

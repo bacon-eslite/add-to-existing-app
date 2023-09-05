@@ -3,11 +3,15 @@ import 'package:flutter/material.dart';
 class AppColors {
   static const int primaryCode = 0xFF00BFA5;
   static const int normalCode = 0xFF000000;
-  static const int textCode = 0xFF757575;
+  static const int textCode = 0xFF606060;
   static const int successCode = 0xFF00C853;
   static const int infoCode = 0xFF00B0FF;
   static const int warningCode = 0xFFFFAB00;
   static const int dangerCode = 0xFFD50000;
+
+  static const int whiteCode = 0xFFFFFFFF;
+  static const int blackCode = 0xFF000000;
+  static const int transparentCode = 0x00000000;
 
   static const Color primaryColor = Color(primaryCode);
   static const Color normalColor = Color(normalCode);
@@ -16,6 +20,10 @@ class AppColors {
   static const Color infoColor = Color(infoCode);
   static const Color warningColor = Color(warningCode);
   static const Color dangerColor = Color(dangerCode);
+
+  static const Color whiteColor = Color(whiteCode);
+  static const Color blackColor = Color(blackCode);
+  static const Color transparentColor = Color(transparentCode);
 
   static const MaterialColor primary = MaterialColor(
     primaryCode,
@@ -58,9 +66,9 @@ class AppColors {
       300: Color(0xFFE0E0E0),
       400: Color(0xFFBDBDBD),
       500: textColor,
-      600: Color(0xFF757575),
-      700: Color(0xFF616161),
-      800: Color(0xFF424242),
+      600: Color(0xFF555555),
+      700: Color(0xFF404040),
+      800: Color(0xFF323232),
       900: Color(0xFF212121),
     },
   );
@@ -126,6 +134,54 @@ class AppColors {
       700: Color(0xFFD32F2F),
       800: Color(0xFFC62828),
       900: Color(0xFFB71C1C),
+    },
+  );
+
+  static const MaterialColor white = MaterialColor(
+    whiteCode,
+    <int, Color>{
+      50: Color(0xFFFFFFFF),
+      100: Color(0xFFFFFFFF),
+      200: Color(0xFFFFFFFF),
+      300: Color(0xFFFFFFFF),
+      400: Color(0xFFFFFFFF),
+      500: whiteColor,
+      600: Color(0xFFFFFFFF),
+      700: Color(0xFFFFFFFF),
+      800: Color(0xFFFFFFFF),
+      900: Color(0xFFFFFFFF),
+    },
+  );
+
+  static const MaterialColor black = MaterialColor(
+    blackCode,
+    <int, Color>{
+      50: Color(0xFF000000),
+      100: Color(0xFF000000),
+      200: Color(0xFF000000),
+      300: Color(0xFF000000),
+      400: Color(0xFF000000),
+      500: blackColor,
+      600: Color(0xFF000000),
+      700: Color(0xFF000000),
+      800: Color(0xFF000000),
+      900: Color(0xFF000000),
+    },
+  );
+
+  static const MaterialColor transparent = MaterialColor(
+    transparentCode,
+    <int, Color>{
+      50: Color(0x00000000),
+      100: Color(0x00000000),
+      200: Color(0x00000000),
+      300: Color(0x00000000),
+      400: Color(0x00000000),
+      500: transparentColor,
+      600: Color(0x00000000),
+      700: Color(0x00000000),
+      800: Color(0x00000000),
+      900: Color(0x00000000),
     },
   );
 }

@@ -2,16 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_module/common/style/style.dart';
 
 class TextButtonStyles {
-  static ButtonStyle normal({double? radius}) => TextButton.styleFrom(
-        foregroundColor: AppColors.normal,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(radius ?? 32),
-          side: BorderSide(
-            color: radius == null ? Colors.transparent : AppColors.normal,
-          ),
-        ),
-      );
-
   static ButtonStyle primary({double? radius}) => TextButton.styleFrom(
         foregroundColor: AppColors.primary,
         shape: RoundedRectangleBorder(
