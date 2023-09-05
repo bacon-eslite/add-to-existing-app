@@ -12,7 +12,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       initialRoute: HomeRoutes.home,
       theme: Theme.of(context).copyWith(
-        colorScheme: ColorScheme.fromSeed(seedColor: AppColors.primary),
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: AppColors.primary,
+          primary: AppColors.primary,
+        ),
         textTheme: TextTheme(
           displayLarge: TextStyles.displayLarge(),
           displayMedium: TextStyles.displayMedium(),
@@ -28,6 +31,15 @@ class MyApp extends StatelessWidget {
           labelSmall: TextStyles.labelSmall(),
         ),
         iconTheme: const IconThemeData(color: AppColors.primary),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            shape: ButtonShape.rounded(),
+          ),
+        ),
+        floatingActionButtonTheme: const FloatingActionButtonThemeData(
+          backgroundColor: AppColors.primary,
+          foregroundColor: AppColors.white,
+        ),
       ),
       onGenerateRoute: (settings) => AppRoutes().onGenerateRoute(settings),
     );
