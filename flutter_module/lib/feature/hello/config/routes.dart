@@ -21,10 +21,13 @@ class HelloRoutes {
           final args = settings.arguments as UserDetailArguments;
           return UserDetailPage(user: args.user);
         }),
+        buttons:
+            MaterialPageRoute(builder: (context) => const ButtonListPage()),
       };
 
   static const String fragment = '/fragment';
   static const String fullscreen = '/fullscreen';
   static const String userList = '/users';
   static const String userDetail = '/users/detail';
+  static const String buttons = '/buttons';
 }
