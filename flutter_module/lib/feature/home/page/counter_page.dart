@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_module/common/style/style.dart';
 import 'package:flutter_module/feature/home/provider/provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -26,7 +27,7 @@ class CounterPage extends ConsumerWidget {
             const Text('You have pushed the button this many times:'),
             Text(
               '${ref.watch(counterProvider)}',
-              style: Theme.of(context).textTheme.headlineMedium,
+              style: TextStyles.displayLarge(color: AppColors.primary),
             ),
           ],
         ),
