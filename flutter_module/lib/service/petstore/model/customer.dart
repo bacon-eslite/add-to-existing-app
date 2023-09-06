@@ -26,7 +26,7 @@ class Customer extends Equatable {
   factory Customer.fromDto(api.Customer dto) => Customer(
         id: dto.id,
         username: dto.username,
-        addresses: dto.address?.map((e) => Address.fromDto(e)).toList(),
+        addresses: dto.address.map((e) => Address.fromDto(e)).toList(),
       );
 
   // to dto

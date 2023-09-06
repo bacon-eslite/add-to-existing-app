@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_module/generated/l10n.dart';
 
 class Dialogs {
   static Future<void> showOkDialog(
@@ -14,7 +15,7 @@ class Dialogs {
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: const Text('OK'),
+            child: Text(S.of(context).ok),
           ),
         ],
       ),
@@ -34,11 +35,11 @@ class Dialogs {
             actions: [
               TextButton(
                 onPressed: () => Navigator.pop(context, false),
-                child: const Text('No'),
+                child: Text(S.of(context).no),
               ),
               TextButton(
                 onPressed: () => Navigator.pop(context, true),
-                child: const Text('Yes'),
+                child: Text(S.of(context).yes),
               ),
             ],
           ),

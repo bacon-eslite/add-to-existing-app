@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_module/common/extension/extension.dart';
 import 'package:flutter_module/feature/hello/model/model.dart';
+import 'package:flutter_module/generated/l10n.dart';
 
 class UserDetailPage extends StatelessWidget {
   final User user;
@@ -24,42 +25,42 @@ class UserDetailPage extends StatelessWidget {
           children: [
             TableRow(
               children: [
-                const Text('Id'),
+                Text(S.of(context).user_id),
                 Text('${user.id}'),
                 const SizedBox(),
               ],
             ),
             TableRow(
               children: [
-                const Text('Name'),
+                Text(S.of(context).user_name),
                 Text('${user.name}'),
                 const SizedBox(),
               ],
             ),
             TableRow(
               children: [
-                const Text('Email'),
+                Text(S.of(context).user_name),
                 Text('${user.email}'),
                 const SizedBox(),
               ],
             ),
             TableRow(
               children: [
-                const Text('Phone'),
+                Text(S.of(context).user_phone),
                 Text('${user.phone}'),
                 const SizedBox(),
               ],
             ),
             TableRow(
               children: [
-                const Text('Local'),
+                Text(S.of(context).user_local_create_time),
                 Text('${user.createdAt?.yMdHms}'),
                 Text('${user.createdAt?.withTimeZone}'),
               ],
             ),
             TableRow(
               children: [
-                const Text('UTC'),
+                Text(S.of(context).user_utc_create_time),
                 Text('${user.createdAtUtc?.yMdHms}'),
                 Text('${user.createdAtUtc?.withTimeZone}'),
               ],

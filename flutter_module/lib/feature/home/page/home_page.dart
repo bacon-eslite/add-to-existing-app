@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_module/feature/feature.dart';
+import 'package:flutter_module/generated/l10n.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -8,7 +9,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Flutter Demo'),
+        title: Text(S.of(context).home_title),
       ),
       body: const HomeMenu(),
     );
@@ -23,27 +24,27 @@ class HomeMenu extends StatelessWidget {
     return Column(
       children: [
         ListTile(
-          title: const Text('Counter'),
+          title: Text(S.of(context).home_menu_counter),
           onTap: () => Navigator.pushNamed(context, HomeRoutes.counter),
         ),
         ListTile(
-          title: const Text('Full Screen'),
+          title: Text(S.of(context).home_menu_fullscreen),
           onTap: () => Navigator.pushNamed(context, HelloRoutes.fullscreen),
         ),
         ListTile(
-          title: const Text('Fragment'),
+          title: Text(S.of(context).home_menu_fragment),
           onTap: () => Navigator.pushNamed(context, HelloRoutes.fragment),
         ),
         ListTile(
-          title: const Text('User List'),
+          title: Text(S.of(context).home_menu_user_list),
           onTap: () => Navigator.pushNamed(context, HelloRoutes.userList),
         ),
         ListTile(
-          title: const Text('Weather'),
+          title: Text(S.of(context).home_menu_weather),
           onTap: () => Navigator.pushNamed(context, WeatherRoutes.weather),
         ),
         ListTile(
-          title: const Text('Buttons'),
+          title: Text(S.of(context).home_menu_buttons_and_messaging),
           onTap: () => Navigator.pushNamed(context, HelloRoutes.buttons),
         ),
       ],

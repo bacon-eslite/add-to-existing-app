@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_module/common/util/geo_location.dart';
 import 'package:flutter_module/feature/feature.dart';
+import 'package:flutter_module/generated/l10n.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class WeatherHomePage extends ConsumerWidget {
@@ -9,32 +10,35 @@ class WeatherHomePage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Weather Home Page')),
+      appBar: AppBar(title: Text(S.of(context).home_menu_weather)),
       body: ListView(
         children: [
           ListTile(
-            title: const Text('City weather'),
+            title: Text(S.of(context).weather_city_weather),
             onTap: () {
               Navigator.pushNamed(context, WeatherRoutes.search);
             },
           ),
           ListTile(
-            title: const Text('Current weather'),
+            title: Text(S.of(context).weather_current_weather),
             onTap: () async {
               final permission = await GeoLocation().isPermissionGranted;
+              if (!context.mounted) return;
               if (!permission) {
                 ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(
-                    content: Text('Location permission is not granted'),
+                  SnackBar(
+                    content: Text(S.of(context).permission_denied_geolocation),
                   ),
                 );
                 return;
               }
               final location = await GeoLocation().getCurrentPosition();
+              if (!context.mounted) return;
               if (location == null) {
                 ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(
-                    content: Text('Location is not available'),
+                  SnackBar(
+                    content:
+                        Text(S.of(context).weather_hint_location_not_available),
                   ),
                 );
                 return;

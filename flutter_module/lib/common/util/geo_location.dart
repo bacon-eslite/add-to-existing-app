@@ -1,3 +1,4 @@
+import 'package:flutter_module/common/util/util.dart';
 import 'package:geolocator/geolocator.dart';
 
 class GeoLocation {
@@ -14,9 +15,15 @@ class GeoLocation {
     return permission;
   }
 
-  Future<Position> getCurrentPosition() async {
-    return await Geolocator.getCurrentPosition(
-      desiredAccuracy: LocationAccuracy.high,
-    );
+  Future<Position?> getCurrentPosition() async {
+    try {
+      final position = await Geolocator.getCurrentPosition(
+        desiredAccuracy: LocationAccuracy.high,
+      );
+      return position;
+    } catch (e) {
+      Logger.e('get position failed: $e');
+      return null;
+    }
   }
 }

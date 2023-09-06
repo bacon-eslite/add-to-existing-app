@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_module/common/util/view/snackbar.dart';
+import 'package:flutter_module/generated/l10n.dart';
 import 'package:hello/hello.dart';
 import 'package:random_x/random_x.dart';
 
@@ -31,10 +32,11 @@ class _FullScreenWidgetState extends State<FullScreenWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Full Screen'),
+        title: Text(S.of(context).home_menu_fullscreen),
         actions: [
           IconButton(
-            onPressed: () => showSnackBar(context, HelloApi().sayHello(name: RndX.generateName())),
+            onPressed: () => showSnackBar(
+                context, HelloApi().sayHello(name: RndX.generateName())),
             icon: const Icon(Icons.published_with_changes_rounded),
           )
         ],
