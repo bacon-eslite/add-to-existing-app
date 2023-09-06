@@ -11,8 +11,8 @@ class CityTile extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return ListTile(
-      title: Text(location.name ?? ''),
-      subtitle: Text(location.city ?? ''),
+      title: location.name == null ? null : Text(location.name!),
+      subtitle: location.city == null ? null : Text(location.city!),
       onTap: () async {
         if (location.latitude == null || location.longitude == null) return;
         Navigator.pushNamed(

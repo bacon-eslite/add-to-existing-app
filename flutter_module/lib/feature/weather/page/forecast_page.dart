@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_module/feature/weather/model/model.dart';
 import 'package:flutter_module/feature/weather/provider/forecast.dart';
 import 'package:flutter_module/feature/weather/view/view.dart';
+import 'package:flutter_module/generated/l10n.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class ForecastPage extends ConsumerStatefulWidget {
@@ -29,13 +30,13 @@ class ForecastPageState extends ConsumerState<ForecastPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Forecast')),
+      appBar: AppBar(title: Text(S.of(context).home_menu_weather)),
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Text(
-              'Location: ${widget.location.name}',
+              '${S.of(context).weather_forecast_hint_location}: ${widget.location.name}',
               textAlign: TextAlign.center,
             ),
             if (ref.watch(forecastPodProvider) == null)

@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_module/common/style/style.dart';
+import 'package:flutter_module/generated/l10n.dart';
 
 import '../../../common/util/util.dart';
 
@@ -11,7 +12,7 @@ class ButtonListPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Buttons & Messaging'),
+        title: Text(S.of(context).home_menu_buttons_and_messaging),
       ),
       body: Center(
         child: Column(
@@ -75,7 +76,7 @@ class ButtonListPage extends StatelessWidget {
   Future<dynamic> showBottomSheet(BuildContext context) {
     return showModalBottomSheet(
       context: context,
-      builder: (context) => Container(
+      builder: (context) => SizedBox(
         height: 200,
         child: Center(
           child: Column(

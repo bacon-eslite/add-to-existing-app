@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_module/common/config/config.dart';
 import 'package:flutter_module/common/style/style.dart';
+import 'package:flutter_module/generated/l10n.dart';
 
 import 'feature/feature.dart';
 
@@ -10,6 +12,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      localizationsDelegates: const [
+        ...AppLocalizations.localizationsDelegates,
+        S.delegate,
+      ],
+      supportedLocales: [
+        ...AppLocalizations.supportedLocales,
+        ...S.delegate.supportedLocales,
+      ],
       initialRoute: HomeRoutes.home,
       theme: Theme.of(context).copyWith(
         colorScheme: ColorScheme.fromSeed(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_module/common/style/style.dart';
 import 'package:flutter_module/feature/home/provider/provider.dart';
+import 'package:flutter_module/generated/l10n.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class CounterPage extends ConsumerWidget {
@@ -24,7 +25,7 @@ class CounterPage extends ConsumerWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text('You have pushed the button this many times:'),
+            Text(S.of(context).counter_push_button_times),
             Text(
               '${ref.watch(counterProvider)}',
               style: TextStyles.displayLarge(color: AppColors.primary),
@@ -34,7 +35,7 @@ class CounterPage extends ConsumerWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => ref.read(counterProvider.notifier).increment(),
-        tooltip: 'Increment',
+        tooltip: S.of(context).counter_button_increment,
         child: const Icon(Icons.add),
       ),
     );

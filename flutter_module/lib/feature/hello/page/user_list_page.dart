@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_module/feature/hello/config/config.dart';
 import 'package:flutter_module/feature/hello/provider/provider.dart';
 import 'package:flutter_module/feature/hello/view/view.dart';
+import 'package:flutter_module/generated/l10n.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class UserListPage extends ConsumerWidget {
@@ -11,7 +12,7 @@ class UserListPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('User List'),
+        title: Text(S.of(context).home_menu_user_list),
         actions: [
           IconButton(
             onPressed: () => ref.read(userListProvider.notifier).reset(),
@@ -41,7 +42,7 @@ class UserList extends ConsumerWidget {
       itemBuilder: (context, index) {
         final user = ref.watch(userListProvider)[index];
         return ListTile(
-          title: Text(user.name ?? 'No name'),
+          title: Text(user.name ?? S.of(context).user_no_name),
           subtitle: Text('${user.createdAt}'),
           trailing: IconButton(
             onPressed: () => ref.read(userListProvider.notifier).remove(user),

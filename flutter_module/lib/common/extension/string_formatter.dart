@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 extension StringUrl on String {
   Uri? get toUri => Uri.tryParse(this);
 }

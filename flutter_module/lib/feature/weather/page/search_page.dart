@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_module/generated/l10n.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../provider/provider.dart';
@@ -11,7 +12,7 @@ class SearchPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Search'),
+        title: Text(S.of(context).home_menu_weather),
         actions: [
           IconButton(
             icon: const Icon(Icons.refresh),
