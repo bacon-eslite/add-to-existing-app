@@ -14,6 +14,12 @@ dependencies:
 
   cupertino_icons: ^1.0.2
 
+#  environment:
+  flutter_dotenv: ^5.1.0
+
+#  localization:
+  intl: any
+
 # annotation:
   openapi_generator_annotations: ^4.13.1
   json_annotation: ^4.8.1
@@ -22,16 +28,15 @@ dependencies:
 #  state management:
   flutter_riverpod: ^2.3.7
 
+#  geo location:
+  geolocator: ^10.0.0
+  geocoding: ^2.1.0
 
 #  utility:
-  random_x: ^0.3.1
   logger: ^1.0.0
-  intl: any
   equatable: ^2.0.5
   collection: ^1.17.1
   tuple: ^2.0.2
-  geolocator: ^10.0.0
-  geocoding: ^2.1.0
 
 #  data layer:
   petstore_api:
@@ -42,6 +47,9 @@ dependencies:
 
   weather_api:
     path: ./api/weather_api
+
+#  fake data:
+  random_x: ^0.3.1
 
 dev_dependencies:
   flutter_test:

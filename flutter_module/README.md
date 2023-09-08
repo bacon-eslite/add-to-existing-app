@@ -17,13 +17,24 @@ lib
 │       ├── json_converter
 ├── feature
 │   ├── feature1
-│   │   ├── provider
+│   │   ├── config
 │   │   ├── model
 │   │   ├── page
+│   │   ├── provider
 │   │   ├── service
 │   │   ├── util
-│   │   └── widget
+│   │   └── view
 │   ├── feature2
+|   ...
+├── generated
+│   └── intl
+│       ├── messages_all.dart
+│       ├── messages_en.dart
+│       ├── messages_zh.dart
+│   ...
+├── l10n
+│   ├── intl_en.arb
+│   ├── intl_zh.arb
 |   ...
 ├── service
 │   ├── service1
@@ -49,6 +60,7 @@ api
 │       ├── src
 │       │   ├── api
 │       │   ├── auth
+│       │   ├── config
 │       │   ├── model
 │       │   ├── util
 |       |   ├── api_client.dart
@@ -68,27 +80,38 @@ api
         - `util`：工具
             - `json_converter`：json 轉換器
             - `logger`：日誌
-            - `view`：View functions
+            - `view`：UI 組件
     - `feature`：功能模組
+        - `config`: 設定
         - `provider`：狀態管理
         - `model`：資料模型
         - `page`：頁面
         - `service`：服務
         - `util`：工具
-        - `widget`：元件
-    - `service`: 服務模組
+        - `view`：UI 組件
+    - `service`: 無 UI 的功能模組
         - `model`：資料模型
         - `service`：服務
         - `service.dart`：服務模組入口
+    - `generated`：自動生成的程式碼
+        - `intl`：國際化
+            - `messages_all.dart`：國際化函式庫
+            - `messages_{locale}.dart`：國際化語言檔
+    - `l10n`: 國際化語言檔
+        - `intl_{locale}.arb`：國際化語言檔
 
 ---
 
 - `api`：API packages
-    - `auth`：驗證
-    - `model`：DTO
-    - `api_client`：API 客戶端
-    - `api_exception`：API 例外
-    - `api`：API 函式庫
+    - `lib`：API package
+        - `src`：
+            - `api`：API handlers
+            - `auth`：驗證
+            - `config`：設定
+            - `model`：DTO
+            - `api_client`：API 客戶端
+            - `api_exception`：API 例外
+            - `{domain}_api.dart`：API 函式庫
 - `main.dart`：程式進入點
 
 > package 內的同名檔案整理該 package 要 export 給 package 外部使用的成員，
