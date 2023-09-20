@@ -2,19 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_module/common/style/style.dart';
 
 class TextStyles {
-  static TextStyle displayLarge({Color? color}) => TextStyle(
+  static TextStyle headlineLarge({Color? color}) => TextStyle(
         fontSize: 40,
         fontWeight: FontWeight.bold,
         color: color ?? AppColors.text,
       );
 
-  static TextStyle displayMedium({Color? color}) => TextStyle(
+  static TextStyle headlineMedium({Color? color}) => TextStyle(
         fontSize: 32,
         fontWeight: FontWeight.bold,
         color: color ?? AppColors.text,
       );
 
-  static TextStyle displaySmall({Color? color}) => TextStyle(
+  static TextStyle headlineSmall({Color? color}) => TextStyle(
         fontSize: 28,
         fontWeight: FontWeight.bold,
         color: color ?? AppColors.text,

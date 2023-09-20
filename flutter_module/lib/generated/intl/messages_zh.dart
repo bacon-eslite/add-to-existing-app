@@ -37,7 +37,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "home_menu_user_list":
             MessageLookupByLibrary.simpleMessage("Users：riverpod 範例"),
         "home_menu_weather":
-            MessageLookupByLibrary.simpleMessage("API 範例：天氣預報\n"),
+            MessageLookupByLibrary.simpleMessage("API 範例：天氣預報"),
         "home_title": MessageLookupByLibrary.simpleMessage("首頁"),
         "no": MessageLookupByLibrary.simpleMessage("否"),
         "ok": MessageLookupByLibrary.simpleMessage("好"),

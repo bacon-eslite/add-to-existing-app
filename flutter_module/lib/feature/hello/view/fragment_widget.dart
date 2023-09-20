@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_module/common/util/util.dart';
 
 class FragmentWidget extends StatefulWidget {
   const FragmentWidget({super.key});
@@ -18,9 +19,15 @@ class _FragmentWidgetState extends State<FragmentWidget> {
   }
 
   Future<void> initMessage() async {
-    final msg = await const MethodChannel('fragment')
-        .invokeMethod('message_to_flutter');
-    setState(() => message = msg);
+    const channel = MethodChannel('fragment');
+    final resp = (await channel.invokeMethod('message_to_flutter'));
+    Logger.d('resp: $resp');
+    if (resp is! Map) {
+      setState(() => message = 'resp: $resp');
+      return;
+    }
+    final m = resp.cast<String, dynamic>();
+    setState(() => message = m['message']);
   }
 
   @override
@@ -39,7 +46,7 @@ class _FragmentWidgetState extends State<FragmentWidget> {
           ),
           Center(
             child: Text(
-              message ?? 'No message yet',
+              message ?? 'No message',
               style: const TextStyle(fontSize: 24),
             ),
           ),

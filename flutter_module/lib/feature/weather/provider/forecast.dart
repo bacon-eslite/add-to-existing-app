@@ -7,7 +7,7 @@ import '../service/service.dart';
 part 'forecast.g.dart';
 
 @riverpod
-class ForecastPod extends _$ForecastPod {
+class ForecastProvider extends _$Forecast {
   @override
   Forecast? build() => null;
 

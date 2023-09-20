@@ -28,7 +28,7 @@ class CounterPage extends ConsumerWidget {
             Text(S.of(context).counter_push_button_times),
             Text(
               '${ref.watch(counterProvider)}',
-              style: TextStyles.displayLarge(color: AppColors.primary),
+              style: TextStyles.headlineLarge(color: AppColors.primary),
             ),
           ],
         ),
