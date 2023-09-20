@@ -3,6 +3,8 @@ import 'package:flutter_module/common/style/style.dart';
 import 'package:flutter_module/feature/weather/provider/location.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../generated/l10n.dart';
+
 class CitySearchBar extends ConsumerStatefulWidget {
   const CitySearchBar({super.key});
 
@@ -27,7 +29,7 @@ class _CitySearchBarState extends ConsumerState<CitySearchBar> {
               controller: _controller,
               validator: (value) {
                 if (value == null || value.isEmpty) {
-                  return 'Please enter a city';
+                  return S.of(context).weather_search_hint_error;
                 }
                 return null;
               },
@@ -37,8 +39,8 @@ class _CitySearchBarState extends ConsumerState<CitySearchBar> {
                 });
               },
               decoration: DecorationStyles.textFieldDecorationStyle(
-                labelText: 'City',
-                hintText: 'Enter a city',
+                labelText: S.of(context).weather_search_label_city,
+                hintText: S.of(context).weather_search_hint_city,
               ),
             ),
           ),

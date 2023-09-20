@@ -21,7 +21,7 @@ class ForecastPageState extends ConsumerState<ForecastPage> {
   @override
   void initState() {
     super.initState();
-    ref.read(forecastPodProvider.notifier).loadForecast(
+    ref.read(forecastProvider.notifier).loadForecast(
           widget.location.latitude!,
           widget.location.longitude!,
         );
@@ -39,9 +39,9 @@ class ForecastPageState extends ConsumerState<ForecastPage> {
               '${S.of(context).weather_forecast_hint_location}: ${widget.location.name}',
               textAlign: TextAlign.center,
             ),
-            if (ref.watch(forecastPodProvider) == null)
+            if (ref.watch(forecastProvider) == null)
               const Center(child: CircularProgressIndicator()),
-            if (ref.watch(forecastPodProvider) != null) const ForecastView(),
+            if (ref.watch(forecastProvider) != null) const ForecastView(),
           ],
         ),
       ),

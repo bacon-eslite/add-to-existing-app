@@ -9,7 +9,7 @@ class ForecastView extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final pod = ref.watch(forecastPodProvider);
+    final pod = ref.watch(forecastProvider);
     Logger.i('pod: $pod');
     if (pod == null) return const Center(child: Text('No data'));
 
