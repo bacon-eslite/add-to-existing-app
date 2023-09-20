@@ -191,3 +191,49 @@ dependencies:
     path: ../path/to/library
   ...
 ```
+
+## Flutter tools
+
+`flutter doctor`
+
+檢查開發環境是否正確安裝。
+
+`flutter pub get`
+
+安裝 pubspec.yaml 內的套件。
+
+`flutter clean`
+
+清除編譯產生的檔案。
+
+`dart run build_runner build [--delete-conflicting-outputs]`
+
+用來產生自動生成的程式碼，搭配 json_serializable、riverpod_generator、openapi_generator 等函式庫使用。
+
+`flutter gen-l10n`
+
+`flutter pub global run intl_utils:generate`
+
+用來產生國際化語言檔，搭配 intl 等函式庫使用。
+
+## Plugins
+
+用一些 plugins 來提升開發效率吧！
+
+### Android studio/Intellij IDEA plugins
+
+- Dart
+- Flutter
+- Flutter Intl
+- JsonToDart
+- Flutter Riverpod Snippets
+- ...
+
+### VSCode extensions
+
+- Dart
+- Flutter
+- Flutter Intl
+- Json To Dart
+- Flutter Color
+- Flutter Riverpod Snippets
