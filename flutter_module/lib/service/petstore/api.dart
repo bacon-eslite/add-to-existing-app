@@ -10,4 +10,4 @@ import 'package:openapi_generator_annotations/openapi_generator_annotations.dart
   generatorName: Generator.dio,
   outputDirectory: 'api/petstore',
 )
-class PetStoreApi extends OpenapiGeneratorConfig {}
+class PetStoreApi {}

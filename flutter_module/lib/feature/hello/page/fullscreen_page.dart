@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_module/common/util/view/snackbar.dart';
-import 'package:flutter_module/generated/l10n.dart';
 import 'package:hello/hello.dart';
 import 'package:random_x/random_x.dart';
+
+import '../../../common/view/view.dart';
+import '../../../generated/l10n.dart';
 
 class FullScreenWidget extends StatefulWidget {
   const FullScreenWidget({super.key});
