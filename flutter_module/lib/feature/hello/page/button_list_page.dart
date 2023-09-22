@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_module/common/style/style.dart';
-import 'package:flutter_module/generated/l10n.dart';
 
-import '../../../common/util/util.dart';
+import '../../../common/style/style.dart';
+import '../../../common/view/view.dart';
+import '../../../generated/l10n.dart';
 
 class ButtonListPage extends StatelessWidget {
   const ButtonListPage({super.key});

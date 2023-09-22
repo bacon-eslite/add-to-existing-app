@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_module/common/util/geo_location.dart';
-import 'package:flutter_module/feature/feature.dart';
-import 'package:flutter_module/generated/l10n.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import '../../../common/config/config.dart';
+import '../../../common/util/geo_location.dart';
+import '../../../common/view/view.dart';
+import '../../../generated/l10n.dart';
+import '../../feature.dart';
 
 class WeatherHomePage extends ConsumerWidget {
   const WeatherHomePage({Key? key}) : super(key: key);
@@ -23,36 +26,34 @@ class WeatherHomePage extends ConsumerWidget {
             title: Text(S.of(context).weather_current_weather),
             onTap: () async {
               final permission = await GeoLocation().isPermissionGranted;
+              // ignore: use_build_context_synchronously
               if (!context.mounted) return;
               if (!permission) {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    content: Text(S.of(context).permission_denied_geolocation),
-                  ),
+                showSnackBar(
+                  context,
+                  S.of(context).weather_hint_location_not_available,
                 );
                 return;
               }
               final location = await GeoLocation().getCurrentPosition();
+              // ignore: use_build_context_synchronously
               if (!context.mounted) return;
               if (location == null) {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    content:
-                        Text(S.of(context).weather_hint_location_not_available),
-                  ),
+                showSnackBar(
+                  context,
+                  S.of(context).weather_hint_location_not_available,
                 );
                 return;
               }
-              Navigator.pushNamed(
-                context,
-                WeatherRoutes.current,
-                arguments: Location(
-                  name: S.of(context).weather_current_weather,
-                  city: S.of(context).weather_current_weather,
-                  latitude: location.latitude,
-                  longitude: location.longitude,
-                ),
-              );
+              AppRoutes.navigateTo(
+                  context,
+                  WeatherRoutes.current,
+                  Location(
+                    name: S.of(context).weather_current_weather,
+                    city: S.of(context).weather_current_weather,
+                    latitude: location.latitude,
+                    longitude: location.longitude,
+                  ));
             },
           ),
         ],

@@ -19,4 +19,8 @@ class AppRoutes {
 
   Route? onGenerateRoute(RouteSettings settings) =>
       routes(settings)[settings.name];
+
+  static void navigateTo(
+          BuildContext context, String routeName, dynamic arguments) =>
+      Navigator.of(context).pushNamed(routeName, arguments: arguments);
 }
