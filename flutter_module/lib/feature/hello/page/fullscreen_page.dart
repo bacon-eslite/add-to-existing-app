@@ -5,6 +5,7 @@ import 'package:random_x/random_x.dart';
 
 import '../../../common/view/view.dart';
 import '../../../generated/l10n.dart';
+import '../method_channel/full_screen_channel.dart';
 
 class FullScreenWidget extends StatefulWidget {
   const FullScreenWidget({super.key});
@@ -23,8 +24,7 @@ class _FullScreenWidgetState extends State<FullScreenWidget> {
   }
 
   Future<void> initMessage() async {
-    final msg = await const MethodChannel('fullscreen')
-        .invokeMethod('message_to_flutter');
+    final msg = await FullscreenChannel.getMessageFromNative();
 
     setState(() => message = msg);
   }
@@ -54,10 +54,8 @@ class _FullScreenWidgetState extends State<FullScreenWidget> {
           ),
           Center(
             child: ElevatedButton(
-              onPressed: () {
-                const MethodChannel('fullscreen').invokeMethod(
-                    'message_from_flutter',
-                    {'message': 'Hello from Flutter Fullscreen!'});
+              onPressed: () async {
+                await FullscreenChannel.sendMessageToNative();
                 SystemNavigator.pop();
               },
               child: const Text('Exit'),

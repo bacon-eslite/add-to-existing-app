@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
-import '../../../common/util/util.dart';
+import '../method_channel/method_channel.dart';
 
 class FragmentWidget extends StatefulWidget {
   const FragmentWidget({super.key});
@@ -20,15 +19,8 @@ class _FragmentWidgetState extends State<FragmentWidget> {
   }
 
   Future<void> initMessage() async {
-    const channel = MethodChannel('fragment');
-    final resp = (await channel.invokeMethod('message_to_flutter'));
-    Logger.d('resp: $resp');
-    if (resp is! Map) {
-      setState(() => message = 'resp: $resp');
-      return;
-    }
-    final m = resp.cast<String, dynamic>();
-    setState(() => message = m['message']);
+    final resp = await PartialViewChannel.getMessageFromNative();
+    setState(() => message = resp ?? 'No message');
   }
 
   @override
@@ -40,7 +32,7 @@ class _FragmentWidgetState extends State<FragmentWidget> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           const Text(
-            'Fragment',
+            'Partial View',
             style: TextStyle(fontSize: 20),
           ),
           Text(
@@ -48,15 +40,11 @@ class _FragmentWidgetState extends State<FragmentWidget> {
             style: const TextStyle(fontSize: 24),
           ),
           ElevatedButton(
-            onPressed: () => const MethodChannel('fragment').invokeMethod(
-                'message_from_flutter',
-                {'message': 'Hello from Flutter Fragment!'}),
+            onPressed: () => PartialViewChannel.sendMessageToNative(),
             child: const Text('Send Message'),
           ),
           TextButton(
-              onPressed: () {
-                const MethodChannel('fragment').invokeMethod('exit');
-              },
+              onPressed: () => PartialViewChannel.exit(),
               child: const Text('Exit'))
         ],
       ),
