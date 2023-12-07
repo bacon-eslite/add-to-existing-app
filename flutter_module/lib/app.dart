@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:flutter_module/common/config/config.dart';
-import 'package:flutter_module/common/style/style.dart';
-import 'package:flutter_module/generated/l10n.dart';
 
+import 'common/config/config.dart';
+import 'common/style/style.dart';
 import 'feature/feature.dart';
+import 'generated/l10n.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});

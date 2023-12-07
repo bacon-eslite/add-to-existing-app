@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_module/feature/weather/provider/provider.dart';
-import 'package:flutter_module/feature/weather/view/view.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import '../provider/provider.dart';
+import 'view.dart';
 
 class CityList extends ConsumerWidget {
   const CityList({super.key});

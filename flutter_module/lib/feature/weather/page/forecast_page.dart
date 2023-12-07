@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_module/feature/weather/model/model.dart';
-import 'package:flutter_module/feature/weather/provider/forecast.dart';
-import 'package:flutter_module/feature/weather/view/view.dart';
-import 'package:flutter_module/generated/l10n.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import '../../../generated/l10n.dart';
+import '../model/model.dart';
+import '../provider/forecast.dart';
+import '../view/view.dart';
 
 class ForecastPage extends ConsumerStatefulWidget {
   final Location location;

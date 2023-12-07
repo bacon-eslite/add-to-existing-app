@@ -1,5 +1,6 @@
-import 'package:flutter_module/common/extension/datetime.dart';
 import 'package:json_annotation/json_annotation.dart';
+
+import '../../extension/datetime.dart';
 
 class JsonDateTimeConverter implements JsonConverter<DateTime?, String> {
   const JsonDateTimeConverter();

@@ -2,21 +2,42 @@ PODS:
   - Flutter (1.0.0)
   - FlutterPluginRegistrant (0.0.1):
     - Flutter
+    - geocoding_ios
+    - geolocator_apple
+    - integration_test
+  - geocoding_ios (1.0.5):
+    - Flutter
+  - geolocator_apple (1.2.0):
+    - Flutter
+  - integration_test (0.0.1):
+    - Flutter
 
 DEPENDENCIES:
   - Flutter (from `../flutter_module/.ios/Flutter`)
   - FlutterPluginRegistrant (from `../flutter_module/.ios/Flutter/FlutterPluginRegistrant`)
+  - geocoding_ios (from `../flutter_module/.ios/.symlinks/plugins/geocoding_ios/ios`)
+  - geolocator_apple (from `../flutter_module/.ios/.symlinks/plugins/geolocator_apple/ios`)
+  - integration_test (from `../flutter_module/.ios/.symlinks/plugins/integration_test/ios`)
 
 EXTERNAL SOURCES:
   Flutter:
     :path: "../flutter_module/.ios/Flutter"
   FlutterPluginRegistrant:
     :path: "../flutter_module/.ios/Flutter/FlutterPluginRegistrant"
+  geocoding_ios:
+    :path: "../flutter_module/.ios/.symlinks/plugins/geocoding_ios/ios"
+  geolocator_apple:
+    :path: "../flutter_module/.ios/.symlinks/plugins/geolocator_apple/ios"
+  integration_test:
+    :path: "../flutter_module/.ios/.symlinks/plugins/integration_test/ios"
 
 SPEC CHECKSUMS:
   Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
-  FlutterPluginRegistrant: 58acfb6cb31ee4ca14f920aba101815efda113ee
+  FlutterPluginRegistrant: f807114e3fddd41962c42aca2f6a61c069fb661e
+  geocoding_ios: a389ea40f6f548de6e63006a2e31bf66ff80769a
+  geolocator_apple: cc556e6844d508c95df1e87e3ea6fa4e58c50401
+  integration_test: 13825b8a9334a850581300559b8839134b124670
 
 PODFILE CHECKSUM: 2f3147fa83c7ed040d758ab9aae85fc1d1c5b3bb
 
-COCOAPODS: 1.12.1
+COCOAPODS: 1.14.3

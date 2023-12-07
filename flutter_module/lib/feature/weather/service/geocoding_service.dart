@@ -1,6 +1,7 @@
-import 'package:flutter_module/common/util/logger.dart';
-import 'package:flutter_module/feature/weather/model/model.dart';
 import 'package:weather_api/weather_api.dart' as api;
+
+import '../../../common/util/logger.dart';
+import '../model/model.dart';
 
 class GeocodingService {
   final api.GeocodingApi _geocodingApi;
@@ -16,14 +17,13 @@ class GeocodingService {
   Future<List<Location>?> getLocations({
     required String city,
   }) async {
-    final resp = await _geocodingApi.getCityGeoData(
+    final (resp, err) = await _geocodingApi.getCityGeoData(
       city: city,
     );
-    final error = resp.item2;
-    if (error != null) {
-      Logger.e(error.message);
+    if (err != null) {
+      Logger.e(err.message);
       return null;
     }
-    return resp.item1?.results?.map((e) => Location.fromDto(e)).toList();
+    return resp?.results?.map((e) => Location.fromDto(e)).toList();
   }
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../model/model.dart';
+import '../model/location.dart';
 import '../page/page.dart';
 
 class WeatherRoutes {

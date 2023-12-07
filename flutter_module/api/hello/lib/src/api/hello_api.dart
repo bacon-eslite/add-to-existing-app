@@ -1,5 +1,6 @@
-import 'package:hello/src/service/service.dart';
+import '../service/service.dart';
 
 class HelloApi {
-  String sayHello({String? name}) => HelloWorldService().getHelloWorld(name: name);
+  String sayHello({String? name}) =>
+      HelloWorldService().getHelloWorld(name: name);
 }

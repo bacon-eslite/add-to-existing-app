@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_module/generated/l10n.dart';
+
+import '../../generated/l10n.dart';
 
 class Dialogs {
   static Future<void> showOkDialog(

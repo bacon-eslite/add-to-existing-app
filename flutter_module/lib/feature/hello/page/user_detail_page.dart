@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_module/common/extension/extension.dart';
-import 'package:flutter_module/feature/hello/model/model.dart';
-import 'package:flutter_module/generated/l10n.dart';
+
+import '../../../common/extension/extension.dart';
+import '../../../generated/l10n.dart';
+import '../model/model.dart';
+import '../model/user.dart';
 
 class UserDetailPage extends StatelessWidget {
   final User user;

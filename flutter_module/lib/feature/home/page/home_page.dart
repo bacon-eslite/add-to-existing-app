@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_module/feature/feature.dart';
-import 'package:flutter_module/generated/l10n.dart';
+
+import '../../../generated/l10n.dart';
+import '../../feature.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});

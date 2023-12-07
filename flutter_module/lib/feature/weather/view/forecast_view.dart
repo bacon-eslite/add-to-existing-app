@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_module/common/util/util.dart';
-import 'package:flutter_module/feature/weather/provider/provider.dart';
-import 'package:flutter_module/generated/l10n.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import '../../../common/util/util.dart';
+import '../../../generated/l10n.dart';
+import '../provider/provider.dart';
 
 class ForecastView extends ConsumerWidget {
   const ForecastView({super.key});

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_module/feature/feature.dart';
+
+import '../../feature/feature.dart';
 
 class AppRoutes {
   static AppRoutes? _instance;

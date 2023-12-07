@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_module/common/style/style.dart';
-import 'package:flutter_module/feature/weather/provider/location.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../common/style/style.dart';
 import '../../../generated/l10n.dart';
+import '../provider/location.dart';
 
 class CitySearchBar extends ConsumerStatefulWidget {
   const CitySearchBar({super.key});

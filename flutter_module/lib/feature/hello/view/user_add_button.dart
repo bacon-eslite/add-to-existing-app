@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_module/feature/hello/model/model.dart';
-import 'package:flutter_module/feature/hello/provider/user.dart';
-import 'package:flutter_module/generated/l10n.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:random_x/random_x.dart';
+
+import '../../../generated/l10n.dart';
+import '../model/model.dart';
+import '../provider/user.dart';
 
 class UserAddButton extends ConsumerWidget {
   const UserAddButton({super.key});
