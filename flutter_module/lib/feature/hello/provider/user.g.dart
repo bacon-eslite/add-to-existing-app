@@ -6,20 +6,21 @@ part of 'user.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$userListHash() => r'5645f1722e857dc29665495ee21cbd082266f2d3';
+String _$userListProviderHash() => r'68586aa5be09f989cf288745389795d6fdccda09';
 
-/// See also [UserList].
-@ProviderFor(UserList)
+/// See also [UserListProvider].
+@ProviderFor(UserListProvider)
 final userListProvider =
-    AutoDisposeNotifierProvider<UserList, List<User>>.internal(
-  UserList.new,
+    AutoDisposeNotifierProvider<UserListProvider, List<User>>.internal(
+  UserListProvider.new,
   name: r'userListProvider',
-  debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$userListHash,
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$userListProviderHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$UserList = AutoDisposeNotifier<List<User>>;
+typedef _$UserListProvider = AutoDisposeNotifier<List<User>>;
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
