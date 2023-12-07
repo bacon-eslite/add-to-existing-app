@@ -1,5 +1,6 @@
-import 'package:flutter_module/service/petstore/model/model.dart';
 import 'package:petstore_api/api.dart' hide User;
+
+import '../model/model.dart';
 
 class UserService {
   static final UserService _instance = UserService._();

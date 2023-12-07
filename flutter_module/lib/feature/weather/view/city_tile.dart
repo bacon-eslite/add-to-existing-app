@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_module/feature/weather/config/config.dart';
-import 'package:flutter_module/feature/weather/model/model.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import '../config/config.dart';
+import '../model/model.dart';
 
 class CityTile extends ConsumerWidget {
   final Location location;

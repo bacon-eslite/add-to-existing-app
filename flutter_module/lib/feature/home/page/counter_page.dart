@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_module/common/style/style.dart';
-import 'package:flutter_module/feature/home/provider/provider.dart';
-import 'package:flutter_module/generated/l10n.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import '../../../common/style/style.dart';
+import '../../../generated/l10n.dart';
+import '../provider/provider.dart';
 
 class CounterPage extends ConsumerWidget {
   const CounterPage({Key? key, this.title}) : super(key: key);

@@ -1,5 +1,6 @@
-import 'package:flutter_module/common/util/util.dart';
 import 'package:geolocator/geolocator.dart';
+
+import 'util.dart';
 
 class GeoLocation {
   Future<bool> get isPermissionGranted async => [

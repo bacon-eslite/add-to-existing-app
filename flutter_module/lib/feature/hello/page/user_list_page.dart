@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_module/feature/hello/config/config.dart';
-import 'package:flutter_module/feature/hello/provider/provider.dart';
-import 'package:flutter_module/feature/hello/view/view.dart';
-import 'package:flutter_module/generated/l10n.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import '../../../generated/l10n.dart';
+import '../config/config.dart';
+import '../provider/provider.dart';
+import '../view/view.dart';
 
 class UserListPage extends ConsumerWidget {
   const UserListPage({super.key});

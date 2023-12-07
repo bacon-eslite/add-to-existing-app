@@ -1,5 +1,6 @@
-import 'package:flutter_module/feature/hello/model/user.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+
+import '../model/user.dart';
 
 part 'user.g.dart';
 

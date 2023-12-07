@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_module/feature/hello/page/page.dart';
-import 'package:flutter_module/feature/hello/view/view.dart';
 
+import '../page/page.dart';
+import '../view/view.dart';
 import 'config.dart';
 
 class HelloRoutes {

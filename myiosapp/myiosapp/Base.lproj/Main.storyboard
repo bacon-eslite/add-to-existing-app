@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -17,15 +18,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7TW-Dn-CMB">
-                                <rect key="frame" x="175.66666666666666" y="415.66666666666669" width="42" height="21"/>
+                                <rect key="frame" x="175.66666666666666" y="351.66666666666669" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2e2-Wq-lm5">
-                                <rect key="frame" x="95.666666666666686" y="460.66666666666669" width="202" height="35"/>
+                                <rect key="frame" x="112.66666666666667" y="396.66666666666669" width="167.66666666666663" height="35"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Show Fullscreen Flutter"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Flutter - Fullscreen"/>
                                 <connections>
                                     <action selector="onFullscreenAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hwg-Vb-HFD"/>
                                 </connections>
@@ -37,12 +38,22 @@
                                     <constraint firstAttribute="height" constant="240" id="6qb-oP-Mdb"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hqH-uU-bSx">
+                                <rect key="frame" x="107.33333333333333" y="455.66666666666669" width="178.33333333333337" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="tinted" title="Flutter - Partial View"/>
+                                <connections>
+                                    <action selector="onPartialViewAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JdU-Kj-5VE"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="hqH-uU-bSx" firstAttribute="top" secondItem="2e2-Wq-lm5" secondAttribute="bottom" constant="24" id="0To-sZ-5yW"/>
+                            <constraint firstItem="hqH-uU-bSx" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="GKs-yW-nrJ"/>
                             <constraint firstItem="2e2-Wq-lm5" firstAttribute="top" secondItem="7TW-Dn-CMB" secondAttribute="bottom" constant="24" id="HQJ-Vm-zPY"/>
-                            <constraint firstItem="7TW-Dn-CMB" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="L6a-EA-n8h"/>
+                            <constraint firstItem="7TW-Dn-CMB" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-64" id="L6a-EA-n8h"/>
                             <constraint firstItem="2e2-Wq-lm5" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="MhB-Y7-tbB"/>
                             <constraint firstItem="N4U-LG-mTN" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="NwV-Sd-oQX"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="N4U-LG-mTN" secondAttribute="bottom" id="Q20-bg-5qi"/>

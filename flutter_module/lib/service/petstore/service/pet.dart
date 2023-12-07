@@ -1,5 +1,6 @@
-import 'package:flutter_module/service/petstore/model/model.dart';
 import 'package:petstore_api/api.dart' hide Pet, Category, Tag, ApiResponse;
+
+import '../model/model.dart';
 
 class PetService {
   // create singleton class

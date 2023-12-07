@@ -1,6 +1,7 @@
 import 'package:equatable/equatable.dart';
-import 'package:flutter_module/common/util/util.dart';
 import 'package:json_annotation/json_annotation.dart';
+
+import '../../../common/util/util.dart';
 
 part 'user.g.dart';
 

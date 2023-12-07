@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_module/feature/home/page/page.dart';
+
+import '../page/page.dart';
 
 class HomeRoutes {
   HomeRoutes._();

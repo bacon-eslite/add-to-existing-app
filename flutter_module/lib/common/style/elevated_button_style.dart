@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_module/common/style/style.dart';
+
+import 'style.dart';
 
 class ElevatedButtonStyles {
   static ButtonStyle normal(

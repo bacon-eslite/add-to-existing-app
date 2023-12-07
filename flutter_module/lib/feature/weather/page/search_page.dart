@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_module/generated/l10n.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../generated/l10n.dart';
 import '../provider/provider.dart';
 import '../view/view.dart';
 

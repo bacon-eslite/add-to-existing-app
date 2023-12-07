@@ -16,7 +16,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        initFragmentVC()
     }
 
     @IBAction func onFullscreenAction(_ sender: Any) {
@@ -41,10 +40,15 @@ class ViewController: UIViewController {
         
         present(vc, animated: true)
     }
+    @IBAction func onPartialViewAction(_ sender: Any) {
+        initFragmentVC()
+    }
     
     func initFragmentVC() -> Void {
         let engine = FlutterEngine(name: "fragment")
         engine.run(withEntrypoint: nil, initialRoute: "/fragment")
+        
+        let vc = FlutterViewController(engine: engine, nibName: nil, bundle: nil)
         
         FlutterMethodChannel(name: "fragment", binaryMessenger: engine.binaryMessenger).setMethodCallHandler { call, result in
             switch call.method {
@@ -54,12 +58,14 @@ class ViewController: UIViewController {
             case "message_from_flutter":
                 self.messageLabel.text = (call.arguments as! Dictionary<String, String>)["message"]
                 break
+            case "exit":
+                vc.view.removeFromSuperview()
+                vc.removeFromParent()
+                break
             default:
                 result(FlutterMethodNotImplemented)
             }
         }
-        
-        let vc = FlutterViewController(engine: engine, nibName: nil, bundle: nil)
         
         addChild(vc)
         

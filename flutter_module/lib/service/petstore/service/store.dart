@@ -1,5 +1,6 @@
-import 'package:flutter_module/service/petstore/model/model.dart';
 import 'package:petstore_api/api.dart' hide Order, ApiResponse;
+
+import '../model/model.dart';
 
 class StoreService {
   static final StoreService _instance = StoreService._();

@@ -1,10 +1,9 @@
 import 'dart:io';
 
-import 'package:tuple/tuple.dart';
-import 'package:weather_api/src/api_client.dart';
-import 'package:weather_api/src/api_exception.dart';
-import 'package:weather_api/src/config/config.dart';
-import 'package:weather_api/src/model/model.dart';
+import '../api_client.dart';
+import '../api_exception.dart';
+import '../config/config.dart';
+import '../dto/dto.dart';
 
 class WeatherApi {
   static WeatherApi? _instance;
@@ -18,7 +17,7 @@ class WeatherApi {
   factory WeatherApi({WeatherApiClient? client}) =>
       _instance ??= WeatherApi._(client: client);
 
-  Future<Tuple2<Weather?, HttpError?>> getWeatherForecast({
+  Future<(Weather?, HttpError?)> getWeatherForecast({
     required double latitude,
     required double longitude,
   }) async {
@@ -30,8 +29,8 @@ class WeatherApi {
       ).queryParams,
     );
     return switch (resp.statusCode) {
-      HttpStatus.ok => Tuple2(Weather.fromJson(resp.data), null),
-      _ => Tuple2(
+      HttpStatus.ok => (Weather.fromJson(resp.data), null),
+      _ => (
           null,
           HttpError(resp.statusCode ?? 0, resp.statusMessage ?? ''),
         )

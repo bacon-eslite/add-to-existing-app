@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_module/common/style/border_style.dart';
+
+import 'border_style.dart';
 
 class DecorationStyles {
   static textFieldDecorationStyle({

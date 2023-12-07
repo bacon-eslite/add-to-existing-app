@@ -1,8 +1,9 @@
 import 'package:collection/collection.dart';
 import 'package:equatable/equatable.dart';
-import 'package:flutter_module/service/petstore/model/category.dart';
-import 'package:flutter_module/service/petstore/model/tag.dart';
 import 'package:petstore_api/api.dart' as api;
+
+import 'category.dart';
+import 'tag.dart';
 
 class Pet extends Equatable {
   const Pet({

@@ -1,7 +1,7 @@
-import 'package:flutter_module/common/util/util.dart';
-import 'package:flutter_module/feature/weather/model/model.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
+import '../../../common/util/util.dart';
+import '../model/model.dart';
 import '../service/service.dart';
 
 part 'forecast.g.dart';

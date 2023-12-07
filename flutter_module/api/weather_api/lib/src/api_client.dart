@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:weather_api/src/api_helper.dart';
+
+import 'api_helper.dart';
 
 class WeatherApiClient {
   static WeatherApiClient? _instance;
