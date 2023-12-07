@@ -11,20 +11,31 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toTopOf="@id/btn_fullscreen"
+        android:layout_marginBottom="16dp"/>
 
     <Button
         android:id="@+id/btn_fullscreen"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:text="Show Fullscreen Flutter"
+        android:text="Flutter - Show Fullscreen"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_message" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <Button
+        android:id="@+id/btn_partial_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Flutter - Show Partial View"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_fullscreen"
+        />
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragment_flutter"

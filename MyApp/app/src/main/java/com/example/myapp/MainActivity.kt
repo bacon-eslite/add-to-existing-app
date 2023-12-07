@@ -21,12 +21,42 @@ class MainActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
-        fullscreenSample()
+        initFlutterFullScreen()
 
-        fragmentSample()
+        initFlutterPartialView()
+
+        binding.btnFullscreen.setOnClickListener {
+            startActivity(
+                FlutterActivity
+                    .withCachedEngine("fullscreen")
+                    .build(this)
+            )
+        }
+
+        binding.btnPartialView.setOnClickListener {
+
+            val fragmentManager = supportFragmentManager;
+            val flutterFragment = fragmentManager
+                .findFragmentByTag("flutter_fragment") as FlutterFragment?
+
+            if (flutterFragment == null) {
+                val newFlutterFragment = FlutterFragment
+                    .withCachedEngine("fragment")
+                    .build<FlutterFragment>()
+
+                fragmentManager
+                    .beginTransaction()
+                    .add(
+                        R.id.fragment_flutter,
+                        newFlutterFragment,
+                        "flutter_fragment"
+                    )
+                    .commit()
+            }
+        }
     }
 
-    private fun fragmentSample() {
+    private fun initFlutterPartialView() {
         val fragmentEngine = FlutterEngine(this)
         fragmentEngine.navigationChannel.setInitialRoute("/fragment")
         fragmentEngine.dartExecutor.executeDartEntrypoint(
@@ -50,31 +80,19 @@ class MainActivity : AppCompatActivity() {
                     binding.tvMessage.text = message
                 }
 
+                "exit" -> {
+                    Log.d("MainActivity", "initFlutterFullScreen: exit")
+                    supportFragmentManager.findFragmentByTag("flutter_fragment")?.let {
+                        supportFragmentManager.beginTransaction().remove(it).commit()
+                    }
+                }
+
                 else -> {}
             }
         }
-
-        val fragmentManager = supportFragmentManager;
-        val flutterFragment = fragmentManager
-            .findFragmentByTag("flutter_fragment") as FlutterFragment?
-
-        if (flutterFragment == null) {
-            val newFlutterFragment = FlutterFragment
-                .withCachedEngine("fragment")
-                .build<FlutterFragment>()
-
-            fragmentManager
-                .beginTransaction()
-                .add(
-                    R.id.fragment_flutter,
-                    newFlutterFragment,
-                    "flutter_fragment"
-                )
-                .commit()
-        }
     }
 
-    private fun fullscreenSample() {
+    private fun initFlutterFullScreen() {
         val fullscreenEngine = FlutterEngine(this)
         fullscreenEngine.navigationChannel.setInitialRoute("/fullscreen")
         fullscreenEngine.dartExecutor.executeDartEntrypoint(
@@ -102,14 +120,6 @@ class MainActivity : AppCompatActivity() {
 
         FlutterEngineCache.getInstance().put("fullscreen", fullscreenEngine)
 
-
-        binding.btnFullscreen.setOnClickListener {
-            startActivity(
-                FlutterActivity
-                    .withCachedEngine("fullscreen")
-                    .build(this)
-            )
-        }
     }
 
 
