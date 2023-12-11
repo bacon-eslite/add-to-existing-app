@@ -24,7 +24,7 @@ class WeatherService {
       longitude: longitude,
     );
     if (err != null) {
-      Logger.e(err.message);
+      Logger().e('getWeatherForecast failed:', err);
       return null;
     }
     return Forecast.fromDto(resp!);

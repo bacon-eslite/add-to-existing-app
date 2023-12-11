@@ -6,7 +6,8 @@ import 'package:openapi_generator_annotations/openapi_generator_annotations.dart
     pubName: 'petstore_api',
   ),
   inputSpecFile: 'openapi.yaml',
-  generatorName: Generator.dio,
+  generatorName: Generator.dart,
   outputDirectory: 'api/petstore',
+  alwaysRun: true,
 )
 class PetStoreApi {}

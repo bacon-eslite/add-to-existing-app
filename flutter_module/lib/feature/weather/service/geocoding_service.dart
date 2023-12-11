@@ -21,7 +21,7 @@ class GeocodingService {
       city: city,
     );
     if (err != null) {
-      Logger.e(err.message);
+      Logger().e('getLocations failed:', err);
       return null;
     }
     return resp?.results?.map((e) => Location.fromDto(e)).toList();

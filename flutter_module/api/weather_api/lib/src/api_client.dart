@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:weather_api/src/logger_interceptor.dart';
 
 import 'api_helper.dart';
 
@@ -20,7 +21,8 @@ class WeatherApiClient {
                 connectTimeout: const Duration(seconds: 120),
                 receiveTimeout: const Duration(seconds: 120),
               ),
-            );
+            )
+          ..interceptors.add(LoggerInterceptor());
 }
 
 class GeocodingApiClient {
@@ -41,5 +43,6 @@ class GeocodingApiClient {
                 connectTimeout: const Duration(seconds: 120),
                 receiveTimeout: const Duration(seconds: 120),
               ),
-            );
+            )
+          ..interceptors.add(LoggerInterceptor());
 }
