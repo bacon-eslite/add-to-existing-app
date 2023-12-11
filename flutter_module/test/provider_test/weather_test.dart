@@ -54,7 +54,7 @@ void main() {
   });
 }
 
-class LocationListMock extends LocationList {
+class LocationListMock extends LocationListProvider {
   @override
   Future<void> loadLocations(String query) async {
     state = [

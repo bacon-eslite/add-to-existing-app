@@ -4,7 +4,6 @@ import 'package:openapi_generator_annotations/openapi_generator_annotations.dart
 @Openapi(
   additionalProperties: AdditionalProperties(
     pubName: 'petstore_api',
-    pubAuthor: 'Bacon Chiu',
   ),
   inputSpecFile: 'openapi.yaml',
   generatorName: Generator.dio,

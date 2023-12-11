@@ -5,7 +5,7 @@ import '../model/user.dart';
 part 'user.g.dart';
 
 @riverpod
-class UserList extends _$UserList {
+class UserListProvider extends _$UserListProvider {
   @override
   List<User> build() => [];
 

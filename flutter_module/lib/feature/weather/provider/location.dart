@@ -6,7 +6,7 @@ import '../service/service.dart';
 part 'location.g.dart';
 
 @riverpod
-class LocationList extends _$LocationList {
+class LocationListProvider extends _$LocationListProvider {
   @override
   List<Location> build() => [];
 
