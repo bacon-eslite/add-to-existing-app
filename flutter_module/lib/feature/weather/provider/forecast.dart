@@ -1,6 +1,5 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import '../../../common/util/util.dart';
 import '../model/model.dart';
 import '../service/service.dart';
 
@@ -16,7 +15,6 @@ class ForecastProvider extends _$ForecastProvider {
       latitude: latitude,
       longitude: longitude,
     );
-    Logger.d('forecast: $forecast');
     state = forecast;
   }
 

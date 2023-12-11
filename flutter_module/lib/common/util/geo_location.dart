@@ -9,11 +9,16 @@ class GeoLocation {
       ].contains(await grantPermission());
 
   Future grantPermission() async {
-    LocationPermission permission = await Geolocator.checkPermission();
-    if (permission == LocationPermission.denied) {
-      permission = await Geolocator.requestPermission();
+    try {
+      LocationPermission permission = await Geolocator.checkPermission();
+      if (permission == LocationPermission.denied) {
+        permission = await Geolocator.requestPermission();
+      }
+      return permission;
+    } catch (e) {
+      Logger().e('get permission failed: ${e.runtimeType}\n$e');
+      return LocationPermission.denied;
     }
-    return permission;
   }
 
   Future<Position?> getCurrentPosition() async {
@@ -23,7 +28,7 @@ class GeoLocation {
       );
       return position;
     } catch (e) {
-      Logger.e('get position failed: $e');
+      Logger().e('get position failed: ${e.runtimeType}\n$e');
       return null;
     }
   }

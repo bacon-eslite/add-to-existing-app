@@ -1,5 +1,5 @@
 // This is a generated file; do not edit or check into version control.
-FLUTTER_ROOT=/Users/bacon-eslite/fvm/versions/stable
+FLUTTER_ROOT=/Users/bacon-eslite/fvm/versions/3.16.2
 FLUTTER_APPLICATION_PATH=/Users/bacon-eslite/Documents/playgrounds/add-to-existing-app/flutter_module/api/weather_api
 COCOAPODS_PARALLEL_CODE_SIGN=true
 FLUTTER_BUILD_DIR=build

@@ -2,7 +2,6 @@ package com.example.myapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import com.example.myapp.databinding.ActivityMainBinding
 import io.flutter.embedding.android.FlutterActivity
 import io.flutter.embedding.android.FlutterFragment
@@ -17,7 +16,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding
-            .inflate(layoutInflater)
+                .inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
 
@@ -27,9 +26,9 @@ class MainActivity : AppCompatActivity() {
 
         binding.btnFullscreen.setOnClickListener {
             startActivity(
-                FlutterActivity
-                    .withCachedEngine("fullscreen")
-                    .build(this)
+                    FlutterActivity
+                            .withCachedEngine("fullscreen")
+                            .build(this)
             )
         }
 
@@ -37,21 +36,21 @@ class MainActivity : AppCompatActivity() {
 
             val fragmentManager = supportFragmentManager;
             val flutterFragment = fragmentManager
-                .findFragmentByTag("flutter_fragment") as FlutterFragment?
+                    .findFragmentByTag("flutter_fragment") as FlutterFragment?
 
             if (flutterFragment == null) {
                 val newFlutterFragment = FlutterFragment
-                    .withCachedEngine("fragment")
-                    .build<FlutterFragment>()
+                        .withCachedEngine("fragment")
+                        .build<FlutterFragment>()
 
                 fragmentManager
-                    .beginTransaction()
-                    .add(
-                        R.id.fragment_flutter,
-                        newFlutterFragment,
-                        "flutter_fragment"
-                    )
-                    .commit()
+                        .beginTransaction()
+                        .add(
+                                R.id.fragment_flutter,
+                                newFlutterFragment,
+                                "flutter_fragment"
+                        )
+                        .commit()
             }
         }
     }
@@ -60,16 +59,15 @@ class MainActivity : AppCompatActivity() {
         val fragmentEngine = FlutterEngine(this)
         fragmentEngine.navigationChannel.setInitialRoute("/fragment")
         fragmentEngine.dartExecutor.executeDartEntrypoint(
-            DartExecutor.DartEntrypoint.createDefault()
+                DartExecutor.DartEntrypoint.createDefault()
         )
 
         FlutterEngineCache.getInstance().put("fragment", fragmentEngine)
 
         MethodChannel(
-            fragmentEngine.dartExecutor.binaryMessenger,
-            "fragment"
+                fragmentEngine.dartExecutor.binaryMessenger,
+                "fragment"
         ).setMethodCallHandler { call, result ->
-            Log.d("MainActivity", "onCreate: ${call.method}, ${call.arguments}")
             when (call.method) {
                 "message_to_flutter" -> {
                     result.success("Hello from Android")
@@ -81,7 +79,6 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 "exit" -> {
-                    Log.d("MainActivity", "initFlutterFullScreen: exit")
                     supportFragmentManager.findFragmentByTag("flutter_fragment")?.let {
                         supportFragmentManager.beginTransaction().remove(it).commit()
                     }
@@ -96,14 +93,13 @@ class MainActivity : AppCompatActivity() {
         val fullscreenEngine = FlutterEngine(this)
         fullscreenEngine.navigationChannel.setInitialRoute("/fullscreen")
         fullscreenEngine.dartExecutor.executeDartEntrypoint(
-            DartExecutor.DartEntrypoint.createDefault()
+                DartExecutor.DartEntrypoint.createDefault()
         )
 
         MethodChannel(
-            fullscreenEngine.dartExecutor.binaryMessenger,
-            "fullscreen"
+                fullscreenEngine.dartExecutor.binaryMessenger,
+                "fullscreen"
         ).setMethodCallHandler { call, result ->
-            Log.d("MainActivity", "onCreate: ${call.method}, ${call.arguments}")
             when (call.method) {
                 "message_to_flutter" -> {
                     result.success("Hello from Android")
