@@ -1,8 +1,7 @@
-import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../page/page.dart';
 import '../view/view.dart';
-import 'config.dart';
 
 class HelloRoutes {
   static HelloRoutes? _instance;
@@ -11,19 +10,28 @@ class HelloRoutes {
 
   factory HelloRoutes() => _instance ??= HelloRoutes._();
 
-  Map<String, Route> routes(RouteSettings settings) => {
-        fragment:
-            MaterialPageRoute(builder: (context) => const FragmentWidget()),
-        fullscreen:
-            MaterialPageRoute(builder: (context) => const FullScreenWidget()),
-        userList: MaterialPageRoute(builder: (context) => const UserListPage()),
-        userDetail: MaterialPageRoute(builder: (context) {
-          final args = settings.arguments as UserDetailArguments;
-          return UserDetailPage(user: args.user);
-        }),
-        buttons:
-            MaterialPageRoute(builder: (context) => const ButtonListPage()),
-      };
+  final routes = [
+    GoRoute(
+      path: fragment,
+      builder: (context, state) => const FragmentWidget(),
+    ),
+    GoRoute(
+      path: fullscreen,
+      builder: (context, state) => const FullScreenWidget(),
+    ),
+    GoRoute(
+      path: userList,
+      builder: (context, state) => const UserListPage(),
+    ),
+    GoRoute(
+      path: userDetail,
+      builder: (context, state) => UserDetailPage(userId: state.extra as int),
+    ),
+    GoRoute(
+      path: buttons,
+      builder: (context, state) => const ButtonListPage(),
+    ),
+  ];
 
   static const String fragment = '/fragment';
   static const String fullscreen = '/fullscreen';

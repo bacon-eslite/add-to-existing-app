@@ -12,7 +12,7 @@ void main() {
   group('home testing', () {
     testWidgets('test home menu', (tester) async {
       await tester.pumpWidget(
-        MaterialApp(
+        MaterialApp.router(
           localizationsDelegates: const [
             ...AppLocalizations.localizationsDelegates,
             S.delegate,
@@ -21,8 +21,7 @@ void main() {
             ...AppLocalizations.supportedLocales,
             ...S.delegate.supportedLocales,
           ],
-          home: const HomePage(),
-          onGenerateRoute: (settings) => AppRoutes().onGenerateRoute(settings),
+          routerConfig: AppRoutes().router,
         ),
       );
 

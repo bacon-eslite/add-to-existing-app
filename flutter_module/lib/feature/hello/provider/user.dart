@@ -1,3 +1,4 @@
+import 'package:collection/collection.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../model/user.dart';
@@ -20,4 +21,7 @@ class UserListProvider extends _$UserListProvider {
   void reset() {
     state = [];
   }
+
+  User? findById(int id) =>
+      state.firstWhereOrNull((element) => element.id == id);
 }

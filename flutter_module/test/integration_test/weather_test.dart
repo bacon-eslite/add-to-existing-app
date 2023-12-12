@@ -14,7 +14,7 @@ void main() {
     testWidgets('test weather menu', (tester) async {
       await tester.pumpWidget(
         ProviderScope(
-          child: MaterialApp(
+          child: MaterialApp.router(
             localizationsDelegates: const [
               ...AppLocalizations.localizationsDelegates,
               S.delegate,
@@ -23,9 +23,7 @@ void main() {
               ...AppLocalizations.supportedLocales,
               ...S.delegate.supportedLocales,
             ],
-            home: const WeatherHomePage(),
-            onGenerateRoute: (settings) =>
-                AppRoutes().onGenerateRoute(settings),
+            routerConfig: AppRoutes().router,
           ),
         ),
       );
@@ -53,7 +51,7 @@ void main() {
     testWidgets('test search page', (tester) async {
       await tester.pumpWidget(
         ProviderScope(
-          child: MaterialApp(
+          child: MaterialApp.router(
             localizationsDelegates: const [
               ...AppLocalizations.localizationsDelegates,
               S.delegate,
@@ -62,9 +60,7 @@ void main() {
               ...AppLocalizations.supportedLocales,
               ...S.delegate.supportedLocales,
             ],
-            home: const SearchPage(),
-            onGenerateRoute: (settings) =>
-                AppRoutes().onGenerateRoute(settings),
+            routerConfig: AppRoutes().router,
           ),
         ),
       );

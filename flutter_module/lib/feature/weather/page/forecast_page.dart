@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_module/feature/weather/provider/location.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../generated/l10n.dart';
-import '../model/model.dart';
 import '../provider/forecast.dart';
 import '../view/view.dart';
 
 class ForecastPage extends ConsumerStatefulWidget {
-  final Location location;
+  final String city;
 
   const ForecastPage({
     Key? key,
-    required this.location,
+    required this.city,
   }) : super(key: key);
 
   @override
@@ -22,10 +22,8 @@ class ForecastPageState extends ConsumerState<ForecastPage> {
   @override
   void initState() {
     super.initState();
-    ref.read(forecastProvider.notifier).loadForecast(
-          widget.location.latitude!,
-          widget.location.longitude!,
-        );
+    final l = ref.read(locationListProvider.notifier).getByName(widget.city);
+    ref.read(forecastProvider.notifier).loadForecast(l.latitude!, l.longitude!);
   }
 
   @override
@@ -37,7 +35,7 @@ class ForecastPageState extends ConsumerState<ForecastPage> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Text(
-              '${S.of(context).weather_forecast_hint_location}: ${widget.location.name}',
+              '${S.of(context).weather_forecast_hint_location}: ${widget.city}',
               textAlign: TextAlign.center,
             ),
             if (ref.watch(forecastProvider) == null)

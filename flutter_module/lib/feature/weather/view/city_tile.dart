@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 import '../config/config.dart';
 import '../model/model.dart';
@@ -16,11 +17,7 @@ class CityTile extends ConsumerWidget {
       subtitle: location.city == null ? null : Text(location.city!),
       onTap: () async {
         if (location.latitude == null || location.longitude == null) return;
-        Navigator.pushNamed(
-          context,
-          WeatherRoutes.current,
-          arguments: location,
-        );
+        context.push('${WeatherRoutes.forecast}/${location.name}');
       },
     );
   }

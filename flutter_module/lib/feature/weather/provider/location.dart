@@ -1,5 +1,6 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
+import '../../../common/util/geo_location.dart';
 import '../model/model.dart';
 import '../service/service.dart';
 
@@ -17,5 +18,20 @@ class LocationListProvider extends _$LocationListProvider {
 
   void reset() {
     state = [];
+  }
+
+  Location getByName(String name) {
+    return state.firstWhere((element) => element.name == name);
+  }
+
+  Future<Location?> getCurrentLocation() async {
+    final geoLocation = await GeoLocation().getCurrentPosition();
+    if (geoLocation == null) return null;
+
+    return Location(
+      name: 'Current Location',
+      latitude: geoLocation.latitude,
+      longitude: geoLocation.longitude,
+    );
   }
 }
