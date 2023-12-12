@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../generated/l10n.dart';
 import '../../feature.dart';
@@ -26,27 +27,30 @@ class HomeMenu extends StatelessWidget {
       children: [
         ListTile(
           title: Text(S.of(context).home_menu_counter),
-          onTap: () => Navigator.pushNamed(context, HomeRoutes.counter),
+          onTap: () =>
+              context.push(Uri(path: HomeRoutes.counter, queryParameters: {
+            'title': S.of(context).home_menu_counter,
+          }).toString()),
         ),
         ListTile(
           title: Text(S.of(context).home_menu_fullscreen),
-          onTap: () => Navigator.pushNamed(context, HelloRoutes.fullscreen),
+          onTap: () => context.push(HelloRoutes.fullscreen),
         ),
         ListTile(
           title: Text(S.of(context).home_menu_fragment),
-          onTap: () => Navigator.pushNamed(context, HelloRoutes.fragment),
+          onTap: () => context.push(HelloRoutes.fragment),
         ),
         ListTile(
           title: Text(S.of(context).home_menu_user_list),
-          onTap: () => Navigator.pushNamed(context, HelloRoutes.userList),
+          onTap: () => context.push(HelloRoutes.userList),
         ),
         ListTile(
           title: Text(S.of(context).home_menu_weather),
-          onTap: () => Navigator.pushNamed(context, WeatherRoutes.weather),
+          onTap: () => context.push(WeatherRoutes.weather),
         ),
         ListTile(
           title: Text(S.of(context).home_menu_buttons_and_messaging),
-          onTap: () => Navigator.pushNamed(context, HelloRoutes.buttons),
+          onTap: () => context.push(HelloRoutes.buttons),
         ),
       ],
     );

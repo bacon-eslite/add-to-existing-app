@@ -57,3 +57,5 @@ doc/api/
 *.iml
 *.ipr
 *.iws
+
+.fvm/

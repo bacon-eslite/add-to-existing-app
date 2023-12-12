@@ -1,6 +1,5 @@
-import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
-import '../model/location.dart';
 import '../page/page.dart';
 
 class WeatherRoutes {
@@ -10,17 +9,23 @@ class WeatherRoutes {
 
   factory WeatherRoutes() => _instance ??= WeatherRoutes._();
 
-  Map<String, Route> routes(RouteSettings settings) => {
-        weather:
-            MaterialPageRoute(builder: (context) => const WeatherHomePage()),
-        search: MaterialPageRoute(builder: (context) => const SearchPage()),
-        current: MaterialPageRoute(builder: (context) {
-          final location = settings.arguments as Location;
-          return ForecastPage(location: location);
-        }),
-      };
+  final routes = [
+    GoRoute(
+      path: weather,
+      builder: (context, state) => const WeatherHomePage(),
+    ),
+    GoRoute(
+      path: search,
+      builder: (context, state) => const SearchPage(),
+    ),
+    GoRoute(
+      path: '$forecast/:city',
+      builder: (context, state) =>
+          ForecastPage(city: state.pathParameters['city']!),
+    ),
+  ];
 
   static const weather = '/weather';
   static const search = '/weather/search';
-  static const current = '/weather/current';
+  static const forecast = '/forecast';
 }

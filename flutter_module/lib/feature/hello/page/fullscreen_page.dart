@@ -56,7 +56,9 @@ class _FullScreenWidgetState extends State<FullScreenWidget> {
             child: ElevatedButton(
               onPressed: () async {
                 await FullscreenChannel.sendMessageToNative();
-                SystemNavigator.pop();
+                if (context.mounted) {
+                  SystemNavigator.pop();
+                }
               },
               child: const Text('Exit'),
             ),

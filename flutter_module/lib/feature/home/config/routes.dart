@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../page/page.dart';
 
@@ -9,13 +9,18 @@ class HomeRoutes {
 
   factory HomeRoutes() => _instance ??= HomeRoutes._();
 
-  Map<String, Route> routes(RouteSettings settings) => {
-        home: MaterialPageRoute(builder: (context) => const HomePage()),
-        counter: MaterialPageRoute(
-            builder: (context) =>
-                CounterPage(title: settings.arguments as String?)),
-      };
+  final routes = [
+    GoRoute(
+      path: home,
+      builder: (context, state) => const HomePage(),
+    ),
+    GoRoute(
+      path: counter,
+      builder: (context, state) =>
+          CounterPage(title: state.uri.queryParameters['title']),
+    ),
+  ];
 
-  static String home = '/home';
+  static String home = '/';
   static String counter = '/counter';
 }

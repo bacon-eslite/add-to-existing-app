@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_module/feature/weather/provider/location.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
-import '../../../common/config/config.dart';
 import '../../../common/util/geo_location.dart';
 import '../../../common/view/view.dart';
 import '../../../generated/l10n.dart';
@@ -19,7 +20,7 @@ class WeatherHomePage extends ConsumerWidget {
           ListTile(
             title: Text(S.of(context).weather_city_weather),
             onTap: () {
-              Navigator.pushNamed(context, WeatherRoutes.search);
+              context.push(WeatherRoutes.search);
             },
           ),
           ListTile(
@@ -35,8 +36,9 @@ class WeatherHomePage extends ConsumerWidget {
                 );
                 return;
               }
-              final location = await GeoLocation().getCurrentPosition();
-              // ignore: use_build_context_synchronously
+              final location = await ref
+                  .read(locationListProvider.notifier)
+                  .getCurrentLocation();
               if (!context.mounted) return;
               if (location == null) {
                 showSnackBar(
@@ -45,15 +47,9 @@ class WeatherHomePage extends ConsumerWidget {
                 );
                 return;
               }
-              AppRoutes.navigateTo(
-                  context,
-                  WeatherRoutes.current,
-                  Location(
-                    name: S.of(context).weather_current_weather,
-                    city: S.of(context).weather_current_weather,
-                    latitude: location.latitude,
-                    longitude: location.longitude,
-                  ));
+              context.push(
+                '${WeatherRoutes.forecast}/current',
+              );
             },
           ),
         ],

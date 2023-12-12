@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../feature/feature.dart';
 
@@ -12,16 +12,11 @@ class AppRoutes {
 
   AppRoutes._();
 
-  Map<String, Route> routes(RouteSettings settings) => {
-        ...HomeRoutes().routes(settings),
-        ...HelloRoutes().routes(settings),
-        ...WeatherRoutes().routes(settings),
-      };
-
-  Route? onGenerateRoute(RouteSettings settings) =>
-      routes(settings)[settings.name];
-
-  static void navigateTo(
-          BuildContext context, String routeName, dynamic arguments) =>
-      Navigator.of(context).pushNamed(routeName, arguments: arguments);
+  final router = GoRouter(
+    routes: [
+      ...HomeRoutes().routes,
+      ...HelloRoutes().routes,
+      ...WeatherRoutes().routes,
+    ],
+  );
 }
