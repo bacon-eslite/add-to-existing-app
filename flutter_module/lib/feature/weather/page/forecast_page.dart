@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_module/feature/weather/provider/location.dart';
+import 'package:flutter_module/feature/weather/provider/city_list.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../generated/l10n.dart';
@@ -22,7 +22,7 @@ class ForecastPageState extends ConsumerState<ForecastPage> {
   @override
   void initState() {
     super.initState();
-    final l = ref.read(locationListProvider.notifier).getByName(widget.city);
+    final l = ref.read(cityListProvider.notifier).getByName(widget.city);
     ref.read(forecastProvider.notifier).loadForecast(l.latitude!, l.longitude!);
   }
 

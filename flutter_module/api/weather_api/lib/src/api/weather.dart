@@ -17,19 +17,19 @@ class WeatherApi {
   factory WeatherApi({WeatherApiClient? client}) =>
       _instance ??= WeatherApi._(client: client);
 
-  Future<(Weather?, HttpError?)> getWeatherForecast({
+  Future<(RspGetForecast?, HttpError?)> getWeatherForecast({
     required double latitude,
     required double longitude,
   }) async {
     final resp = await client.dio.get(
       WeatherRoutes.forecast,
-      queryParameters: ReqGetWeatherForecast(
+      queryParameters: ReqGetForecast(
         latitude: latitude,
         longitude: longitude,
       ).queryParams,
     );
     return switch (resp.statusCode) {
-      HttpStatus.ok => (Weather.fromJson(resp.data), null),
+      HttpStatus.ok => (RspGetForecast.fromJson(resp.data), null),
       _ => (
           null,
           HttpError(resp.statusCode ?? 0, resp.statusMessage ?? ''),

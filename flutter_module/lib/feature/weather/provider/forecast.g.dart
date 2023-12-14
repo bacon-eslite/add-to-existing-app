@@ -6,7 +6,7 @@ part of 'forecast.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$forecastProviderHash() => r'3369a96c544be364929a99d06c316d7a88a9eb5d';
+String _$forecastProviderHash() => r'e0afdb07e4956cd9019ed76f203bfada4a750b9e';
 
 /// See also [ForecastProvider].
 @ProviderFor(ForecastProvider)

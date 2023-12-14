@@ -17,17 +17,17 @@ class GeocodingApi {
   factory GeocodingApi({GeocodingApiClient? client}) =>
       _instance ??= GeocodingApi._(client: client);
 
-  Future<(LocationList?, HttpError?)> getCityGeoData({
+  Future<(RspGetCityList?, HttpError?)> getCityGeoData({
     required String city,
   }) async {
     final resp = await geocodingApiClient.dio.get(
       GeocodingRoutes.searchCity,
-      queryParameters: ReqGetGeocodingLocation(
+      queryParameters: ReqGetCity(
         name: city,
       ).queryParams,
     );
     return switch (resp.statusCode) {
-      HttpStatus.ok => (LocationList.fromJson(resp.data), null),
+      HttpStatus.ok => (RspGetCityList.fromJson(resp.data), null),
       _ => (
           null,
           HttpError(resp.statusCode ?? 0, resp.statusMessage ?? ''),

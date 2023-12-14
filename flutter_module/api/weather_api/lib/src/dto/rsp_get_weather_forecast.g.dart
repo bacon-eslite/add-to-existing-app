@@ -6,7 +6,7 @@ part of 'rsp_get_weather_forecast.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-Weather _$WeatherFromJson(Map<String, dynamic> json) => Weather(
+RspGetForecast _$WeatherFromJson(Map<String, dynamic> json) => RspGetForecast(
       latitude: (json['latitude'] as num?)?.toDouble(),
       longitude: (json['longitude'] as num?)?.toDouble(),
       generationTime: (json['generationtime_ms'] as num?)?.toDouble(),
@@ -16,11 +16,12 @@ Weather _$WeatherFromJson(Map<String, dynamic> json) => Weather(
       elevation: json['elevation'] as double?,
       currentWeather: json['current_weather'] == null
           ? null
-          : CurrentWeather.fromJson(
+          : RspWeather.fromJson(
               json['current_weather'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$WeatherToJson(Weather instance) => <String, dynamic>{
+Map<String, dynamic> _$WeatherToJson(RspGetForecast instance) =>
+    <String, dynamic>{
       'latitude': instance.latitude,
       'longitude': instance.longitude,
       'generationtime_ms': instance.generationTime,
@@ -31,8 +32,7 @@ Map<String, dynamic> _$WeatherToJson(Weather instance) => <String, dynamic>{
       'current_weather': instance.currentWeather?.toJson(),
     };
 
-CurrentWeather _$CurrentWeatherFromJson(Map<String, dynamic> json) =>
-    CurrentWeather(
+RspWeather _$CurrentWeatherFromJson(Map<String, dynamic> json) => RspWeather(
       temperature: (json['temperature'] as num?)?.toDouble(),
       windSpeed: (json['windspeed'] as num?)?.toDouble(),
       windDirection: json['winddirection'] as int?,
@@ -41,7 +41,7 @@ CurrentWeather _$CurrentWeatherFromJson(Map<String, dynamic> json) =>
       time: json['time'] as String?,
     );
 
-Map<String, dynamic> _$CurrentWeatherToJson(CurrentWeather instance) =>
+Map<String, dynamic> _$CurrentWeatherToJson(RspWeather instance) =>
     <String, dynamic>{
       'temperature': instance.temperature,
       'windspeed': instance.windSpeed,

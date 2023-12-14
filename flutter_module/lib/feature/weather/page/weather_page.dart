@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_module/feature/weather/provider/location.dart';
+import 'package:flutter_module/feature/weather/provider/city_list.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
@@ -37,7 +37,7 @@ class WeatherHomePage extends ConsumerWidget {
                 return;
               }
               final location = await ref
-                  .read(locationListProvider.notifier)
+                  .read(cityListProvider.notifier)
                   .getCurrentLocation();
               if (!context.mounted) return;
               if (location == null) {

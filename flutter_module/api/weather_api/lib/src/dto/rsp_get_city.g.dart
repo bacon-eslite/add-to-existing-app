@@ -1,25 +1,26 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'rsp_get_geocoding_location.dart';
+part of 'rsp_get_city.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-LocationList _$LocationListFromJson(Map<String, dynamic> json) => LocationList(
+RspGetCityList _$LocationListFromJson(Map<String, dynamic> json) =>
+    RspGetCityList(
       results: (json['results'] as List<dynamic>?)
-          ?.map((e) => Location.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => RspGetCity.fromJson(e as Map<String, dynamic>))
           .toList(),
       generationTimeMs: (json['generationtime_ms'] as num?)?.toDouble(),
     );
 
-Map<String, dynamic> _$LocationListToJson(LocationList instance) =>
+Map<String, dynamic> _$LocationListToJson(RspGetCityList instance) =>
     <String, dynamic>{
       'results': instance.results?.map((e) => e.toJson()).toList(),
       'generationtime_ms': instance.generationTimeMs,
     };
 
-Location _$LocationFromJson(Map<String, dynamic> json) => Location(
+RspGetCity _$LocationFromJson(Map<String, dynamic> json) => RspGetCity(
       id: json['id'] as int?,
       name: json['name'] as String?,
       latitude: (json['latitude'] as num?)?.toDouble(),
@@ -41,7 +42,7 @@ Location _$LocationFromJson(Map<String, dynamic> json) => Location(
       admin4: json['admin4'] as String?,
     );
 
-Map<String, dynamic> _$LocationToJson(Location instance) => <String, dynamic>{
+Map<String, dynamic> _$LocationToJson(RspGetCity instance) => <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
       'latitude': instance.latitude,

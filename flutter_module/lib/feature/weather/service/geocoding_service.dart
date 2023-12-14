@@ -1,7 +1,6 @@
 import 'package:weather_api/weather_api.dart' as api;
 
-import '../../../common/util/logger.dart';
-import '../model/model.dart';
+import '../../../common/extension/extension.dart';
 
 class GeocodingService {
   final api.GeocodingApi _geocodingApi;
@@ -14,16 +13,16 @@ class GeocodingService {
   factory GeocodingService({api.GeocodingApi? geocodingApi}) =>
       _instance ??= GeocodingService._(geocodingApi: geocodingApi);
 
-  Future<List<Location>?> getLocations({
+  Future<(List<api.RspGetCity>, HttpError?)> queryCities({
     required String city,
   }) async {
     final (resp, err) = await _geocodingApi.getCityGeoData(
       city: city,
     );
+
     if (err != null) {
-      Logger().e('getLocations failed:', err);
-      return null;
+      return (List<api.RspGetCity>.empty(), HttpError(message: err.message));
     }
-    return resp?.results?.map((e) => Location.fromDto(e)).toList();
+    return (resp?.results ?? [], null);
   }
 }

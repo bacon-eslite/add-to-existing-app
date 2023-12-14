@@ -1,4 +1,4 @@
-class ReqGetWeatherForecast {
+class ReqGetForecast {
   final double latitude;
   final double longitude;
   final String? timezone;
@@ -11,7 +11,7 @@ class ReqGetWeatherForecast {
         if (timezone != null) 'timezone': timezone,
       };
 
-  ReqGetWeatherForecast({
+  ReqGetForecast({
     required this.latitude,
     required this.longitude,
     this.timezone,
