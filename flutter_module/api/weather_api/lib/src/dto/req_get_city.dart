@@ -1,11 +1,11 @@
-class ReqGetGeocodingLocation {
+class ReqGetCity {
   final String name;
   final String? count;
   final String? format;
   final String? language;
   final String? apikey;
 
-  ReqGetGeocodingLocation({
+  ReqGetCity({
     required this.name,
     this.count,
     this.format,

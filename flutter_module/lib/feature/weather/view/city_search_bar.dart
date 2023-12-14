@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../common/style/style.dart';
 import '../../../generated/l10n.dart';
-import '../provider/location.dart';
+import '../provider/city_list.dart';
 
 class CitySearchBar extends ConsumerStatefulWidget {
   const CitySearchBar({super.key});
@@ -49,8 +49,8 @@ class _CitySearchBarState extends ConsumerState<CitySearchBar> {
           onPressed: available
               ? () async {
                   ref
-                      .read(locationListProvider.notifier)
-                      .loadLocations(_controller.text);
+                      .read(cityListProvider.notifier)
+                      .getCitiesByName(_controller.text);
                 }
               : null,
           icon: const Icon(Icons.search),

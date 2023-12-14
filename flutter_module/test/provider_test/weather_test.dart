@@ -10,7 +10,7 @@ void main() {
       await tester.pumpWidget(
         ProviderScope(
           overrides: [
-            locationListProvider.overrideWith(() => LocationListMock()),
+            cityListProvider.overrideWith(() => LocationListMock()),
           ],
           child: const MaterialApp(
             home: LocationApp(),
@@ -54,11 +54,11 @@ void main() {
   });
 }
 
-class LocationListMock extends LocationListProvider {
+class LocationListMock extends CityListProvider {
   @override
-  Future<void> loadLocations(String query) async {
+  Future<void> getCitiesByName(String query) async {
     state = [
-      const Location(
+      const City(
         id: 1,
         name: 'London',
         latitude: 51.509865,
@@ -95,19 +95,18 @@ class LocationApp extends StatelessWidget {
     return MaterialApp(
       home: Consumer(
         builder: (context, ref, child) {
-          final locations = ref.watch(locationListProvider);
+          final locations = ref.watch(cityListProvider);
           return Column(
             children: [
               Text('${locations.length}'),
               ElevatedButton(
                 onPressed: () => ref
-                    .read(locationListProvider.notifier)
-                    .loadLocations('London'),
+                    .read(cityListProvider.notifier)
+                    .getCitiesByName('London'),
                 child: const Text('London'),
               ),
               ElevatedButton(
-                onPressed: () =>
-                    ref.read(locationListProvider.notifier).reset(),
+                onPressed: () => ref.read(cityListProvider.notifier).reset(),
                 child: const Text('reset'),
               ),
             ],

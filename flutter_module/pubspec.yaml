@@ -6,6 +6,9 @@ version: 1.0.0+1
 environment:
   sdk: '>=3.0.6 <4.0.0'
 
+#  lib versions:
+isar_version: &isar_version 3.1.0+1
+
 dependencies:
   flutter:
     sdk: flutter
@@ -14,19 +17,16 @@ dependencies:
 
   cupertino_icons: ^1.0.2
 
-  #  environment:
-  flutter_dotenv: ^5.1.0
-
   #  localization:
   intl: any
 
   # annotation:
   openapi_generator_annotations: ^4.13.1
   json_annotation: ^4.8.1
-  riverpod_annotation: ^2.1.2
 
   #  state management:
   flutter_riverpod: ^2.3.7
+  riverpod_annotation: ^2.1.2
 
   #  geo location:
   geolocator: ^10.0.0
@@ -36,16 +36,7 @@ dependencies:
   logger: ^1.0.0
   equatable: ^2.0.5
   collection: ^1.17.1
-
-  #  data layer:
-  petstore_api:
-    path: ./api/petstore
-
-  hello:
-    path: ./api/hello
-
-  weather_api:
-    path: ./api/weather_api
+  path_provider: ^2.1.1
 
   #  fake data:
   random_x: ^0.3.1
@@ -53,6 +44,19 @@ dependencies:
   # navigation router:
   go_router: ^12.1.3
 
+  #  database:
+  isar: *isar_version
+  isar_flutter_libs: *isar_version
+
+  #  data layer:
+  petstore_api:
+    path: ./api/petstore
+  hello:
+    path: ./api/hello
+  weather_api:
+    path: ./api/weather_api
+
+# 開發階段使用的套件，不會被打包進 app 中
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -63,6 +67,7 @@ dev_dependencies:
   openapi_generator: ^4.13.1
   riverpod_generator: ^2.2.6
   json_serializable: ^6.7.1
+  isar_generator: *isar_version
 
 flutter:
   uses-material-design: true

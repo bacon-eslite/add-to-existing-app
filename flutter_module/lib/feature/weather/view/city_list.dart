@@ -11,7 +11,7 @@ class CityList extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return ListView(
       children: [
-        for (final location in ref.watch(locationListProvider))
+        for (final location in ref.watch(cityListProvider))
           CityTile(location: location),
       ],
     );

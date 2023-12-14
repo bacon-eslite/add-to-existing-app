@@ -17,7 +17,7 @@ class SearchPage extends ConsumerWidget {
           IconButton(
             icon: const Icon(Icons.refresh),
             onPressed: () {
-              ref.read(locationListProvider.notifier).reset();
+              ref.read(cityListProvider.notifier).reset();
             },
           ),
         ],

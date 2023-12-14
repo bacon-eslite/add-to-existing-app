@@ -25,6 +25,8 @@ class MainActivity : AppCompatActivity() {
 
         initFlutterPartialView()
 
+        initFlutterWeather()
+
         binding.btnFullscreen.setOnClickListener {
             startActivity(
                 FlutterActivity
@@ -52,6 +54,14 @@ class MainActivity : AppCompatActivity() {
                 )
                 transaction.commit()
             }
+        }
+
+        binding.btnWeather.setOnClickListener {
+            startActivity(
+                FlutterActivity
+                    .withCachedEngine("weather")
+                    .build(this)
+            )
         }
     }
 
@@ -119,8 +129,17 @@ class MainActivity : AppCompatActivity() {
         }
 
         FlutterEngineCache.getInstance().put("fullscreen", fullscreenEngine)
-
     }
 
 
+    private fun initFlutterWeather() {
+        val weatherEngine = FlutterEngine(this)
+        weatherEngine.navigationChannel.setInitialRoute("/weather")
+        weatherEngine.dartExecutor.executeDartEntrypoint(
+            DartExecutor.DartEntrypoint.createDefault()
+        )
+
+        FlutterEngineCache.getInstance().put("weather", weatherEngine)
+
+    }
 }

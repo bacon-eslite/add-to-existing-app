@@ -3,7 +3,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'rsp_get_weather_forecast.g.dart';
 
 @JsonSerializable(explicitToJson: true, fieldRename: FieldRename.snake)
-class Weather {
+class RspGetForecast {
   double? latitude;
   double? longitude;
   @JsonKey(name: 'generationtime_ms')
@@ -12,9 +12,9 @@ class Weather {
   String? timezone;
   String? timezoneAbbreviation;
   double? elevation;
-  CurrentWeather? currentWeather;
+  RspWeather? currentWeather;
 
-  Weather(
+  RspGetForecast(
       {this.latitude,
       this.longitude,
       this.generationTime,
@@ -24,14 +24,14 @@ class Weather {
       this.elevation,
       this.currentWeather});
 
-  factory Weather.fromJson(Map<String, dynamic> json) =>
+  factory RspGetForecast.fromJson(Map<String, dynamic> json) =>
       _$WeatherFromJson(json);
 
   Map<String, dynamic> toJson() => _$WeatherToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true, fieldRename: FieldRename.snake)
-class CurrentWeather {
+class RspWeather {
   double? temperature;
   @JsonKey(name: 'windspeed')
   double? windSpeed;
@@ -42,7 +42,7 @@ class CurrentWeather {
   int? isDay;
   String? time;
 
-  CurrentWeather(
+  RspWeather(
       {this.temperature,
       this.windSpeed,
       this.windDirection,
@@ -50,7 +50,7 @@ class CurrentWeather {
       this.isDay,
       this.time});
 
-  factory CurrentWeather.fromJson(Map<String, dynamic> json) =>
+  factory RspWeather.fromJson(Map<String, dynamic> json) =>
       _$CurrentWeatherFromJson(json);
 
   Map<String, dynamic> toJson() => _$CurrentWeatherToJson(this);

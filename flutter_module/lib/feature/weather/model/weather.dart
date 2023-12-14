@@ -18,7 +18,7 @@ class Forecast extends Equatable {
     this.time,
   });
 
-  factory Forecast.fromDto(api.Weather dto) {
+  factory Forecast.fromDto(api.RspGetForecast dto) {
     return Forecast(
       temperature: dto.currentWeather?.temperature,
       windSpeed: dto.currentWeather?.windSpeed,
@@ -29,9 +29,9 @@ class Forecast extends Equatable {
     );
   }
 
-  api.Weather toDto() {
-    return api.Weather(
-      currentWeather: api.CurrentWeather(
+  api.RspGetForecast toDto() {
+    return api.RspGetForecast(
+      currentWeather: api.RspWeather(
         temperature: temperature,
         windSpeed: windSpeed,
         windDirection: windDirection,

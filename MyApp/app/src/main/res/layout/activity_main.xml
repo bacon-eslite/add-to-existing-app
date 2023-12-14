@@ -10,11 +10,11 @@
         android:id="@+id/tv_message"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="36dp"
         android:text="Hello World!"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/btn_fullscreen"
-        android:layout_marginBottom="16dp"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btn_fullscreen"
@@ -24,8 +24,7 @@
         android:text="Flutter - Show Fullscreen"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@id/tv_message" />
 
     <Button
         android:id="@+id/btn_partial_view"
@@ -34,8 +33,16 @@
         android:text="Flutter - Show Partial View"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btn_fullscreen"
-        />
+        app:layout_constraintTop_toBottomOf="@id/btn_fullscreen" />
+
+    <Button
+        android:id="@+id/btn_weather"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Weather"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_partial_view" />
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragment_flutter"

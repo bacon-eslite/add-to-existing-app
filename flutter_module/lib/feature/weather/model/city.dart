@@ -1,7 +1,9 @@
 import 'package:equatable/equatable.dart';
 import 'package:weather_api/weather_api.dart' as api;
 
-class Location extends Equatable {
+import '../repository/repository.dart';
+
+class City extends Equatable {
   final int? id;
   final String? name;
   final double? latitude;
@@ -12,7 +14,7 @@ class Location extends Equatable {
   final String? city;
   final String? town;
 
-  const Location({
+  const City({
     this.id,
     this.name,
     this.latitude,
@@ -35,8 +37,8 @@ class Location extends Equatable {
       ];
 
 //   from dto
-  factory Location.fromDto(api.Location dto) {
-    return Location(
+  factory City.fromDto(api.RspGetCity dto) {
+    return City(
       id: dto.id,
       name: dto.name,
       latitude: dto.latitude,
@@ -47,5 +49,34 @@ class Location extends Equatable {
       city: dto.admin2,
       town: dto.admin3,
     );
+  }
+
+  factory City.fromRepo(CityRepo repo) {
+    return City(
+      id: repo.id,
+      name: repo.name,
+      latitude: repo.latitude,
+      longitude: repo.longitude,
+      countryCode: repo.countryCode,
+      timezone: repo.timezone,
+      country: repo.country,
+      city: repo.admin2,
+      town: repo.admin3,
+    );
+  }
+
+//   toJson
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'name': name,
+      'latitude': latitude,
+      'longitude': longitude,
+      'countryCode': countryCode,
+      'timezone': timezone,
+      'country': country,
+      'city': city,
+      'town': town,
+    };
   }
 }
