@@ -293,3 +293,14 @@ com.android.builder.dexing.DexArchiveMergerException: Error while merging dex ar
 in a .dex file cannot exceed 64K.
 
 https://stackoverflow.com/questions/55591958/flutter-firestore-causing-d8-cannot-fit-requested-classes-in-a-single-dex-file
+
+## Unable to generate package graph, no `/.dart_tool/flutter_gen/pubspec.yaml` found.
+
+> `flutter pub get` failed</br>
+> Unable to generate package graph, no `/.dart_tool/flutter_gen/pubspec.yaml` found.
+
+solution: `flutter package pub get`
+
+ref: https://github.com/dart-lang/build/issues/2835
+
+
