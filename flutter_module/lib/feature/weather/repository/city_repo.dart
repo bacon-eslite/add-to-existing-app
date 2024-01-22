@@ -1,5 +1,6 @@
-import 'package:flutter_module/common/util/util.dart';
 import 'package:isar/isar.dart';
+
+import '../../../common/util/util.dart';
 
 part 'city_repo.g.dart';
 

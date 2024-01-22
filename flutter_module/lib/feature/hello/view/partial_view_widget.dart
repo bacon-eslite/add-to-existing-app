@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_module/common/util/util.dart';
 
 import '../method_channel/method_channel.dart';
 
-class FragmentWidget extends StatefulWidget {
-  const FragmentWidget({super.key});
+class PartialViewWidget extends StatefulWidget {
+  const PartialViewWidget({super.key});
 
   @override
-  State<FragmentWidget> createState() => _FragmentWidgetState();
+  State<PartialViewWidget> createState() => _PartialViewWidgetState();
 }
 
-class _FragmentWidgetState extends State<FragmentWidget> {
+class _PartialViewWidgetState extends State<PartialViewWidget> {
   String? message;
 
   @override
@@ -19,7 +20,7 @@ class _FragmentWidgetState extends State<FragmentWidget> {
   }
 
   Future<void> initMessage() async {
-    final resp = await PartialViewChannel.getMessageFromNative();
+    final resp = await MainMethodChannel.getMessageFromNative();
     setState(() => message = resp ?? 'No message');
   }
 
@@ -44,7 +45,7 @@ class _FragmentWidgetState extends State<FragmentWidget> {
             child: const Text('Send Message'),
           ),
           TextButton(
-              onPressed: () => PartialViewChannel.exit(),
+              onPressed: () => MainMethodChannel.exit(),
               child: const Text('Exit'))
         ],
       ),

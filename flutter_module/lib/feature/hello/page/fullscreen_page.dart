@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_module/common/util/util.dart';
 import 'package:hello/hello.dart';
 import 'package:random_x/random_x.dart';
 
@@ -24,7 +25,7 @@ class _FullScreenWidgetState extends State<FullScreenWidget> {
   }
 
   Future<void> initMessage() async {
-    final msg = await FullscreenChannel.getMessageFromNative();
+    final msg = await MainMethodChannel.getMessageFromNative();
 
     setState(() => message = msg);
   }
@@ -56,6 +57,7 @@ class _FullScreenWidgetState extends State<FullScreenWidget> {
             child: ElevatedButton(
               onPressed: () async {
                 await FullscreenChannel.sendMessageToNative();
+                await MainMethodChannel.exit();
                 if (context.mounted) {
                   SystemNavigator.pop();
                 }

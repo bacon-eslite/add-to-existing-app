@@ -1,9 +1,9 @@
 import 'package:isar/isar.dart';
 
-part 'user.g.dart';
+part 'user_repo.g.dart';
 
 @collection
-class User {
+class UserRepo {
   Id id = Isar.autoIncrement;
 
   String? name;

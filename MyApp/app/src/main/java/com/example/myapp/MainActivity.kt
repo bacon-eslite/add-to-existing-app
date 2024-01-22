@@ -2,13 +2,7 @@ package com.example.myapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import com.example.myapp.databinding.ActivityMainBinding
-import io.flutter.embedding.android.FlutterActivity
-import io.flutter.embedding.android.FlutterFragment
-import io.flutter.embedding.engine.FlutterEngine
-import io.flutter.embedding.engine.FlutterEngineCache
-import io.flutter.embedding.engine.dart.DartExecutor
 import io.flutter.plugin.common.MethodChannel
 
 class MainActivity : AppCompatActivity() {
@@ -21,125 +15,91 @@ class MainActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
-        initFlutterFullScreen()
+        warmupFullScreen()
 
-        initFlutterPartialView()
-
-        initFlutterWeather()
+        warmupPartialView()
 
         binding.btnFullscreen.setOnClickListener {
-            startActivity(
-                FlutterActivity
-                    .withCachedEngine("fullscreen")
-                    .build(this)
-            )
+            FlutterEngineManager().startActivity(this, FlutterRoutes.Fullscreen)
         }
 
         binding.btnPartialView.setOnClickListener {
+            val fragment = FlutterEngineManager()
+                .getFragment(this, FlutterRoutes.PartialView)
 
-            val fragmentManager = supportFragmentManager;
-            val flutterFragment = fragmentManager
-                .findFragmentByTag("flutter_fragment") as FlutterFragment?
 
-            if (flutterFragment == null) {
-                val newFlutterFragment = FlutterFragment
-                    .withCachedEngine("fragment")
-                    .build<FlutterFragment>()
+            val transaction = supportFragmentManager.beginTransaction()
 
-                val transaction = fragmentManager.beginTransaction()
-                transaction.add(
-                    R.id.fragment_flutter,
-                    newFlutterFragment,
-                    "flutter_fragment",
-                )
-                transaction.commit()
+            if (fragment.isAdded) {
+                transaction.show(fragment)
+            } else {
+                transaction.add(R.id.fragment_flutter, fragment, FlutterRoutes.PartialView.name)
             }
+
+            transaction.commit()
         }
 
         binding.btnWeather.setOnClickListener {
-            startActivity(
-                FlutterActivity
-                    .withCachedEngine("weather")
-                    .build(this)
-            )
+            warmupWeather()
+            FlutterEngineManager().startActivity(this, FlutterRoutes.Weather)
         }
+
+        binding.btnUserList.setOnClickListener {
+            warmupUsers()
+            FlutterEngineManager().startActivity(this, FlutterRoutes.Users)
+        }
+
     }
 
-    private fun initFlutterPartialView() {
-        val fragmentEngine = FlutterEngine(this)
-        fragmentEngine.navigationChannel.setInitialRoute("/fragment")
-        fragmentEngine.dartExecutor.executeDartEntrypoint(
-            DartExecutor.DartEntrypoint.createDefault()
-        )
-
-        FlutterEngineCache.getInstance().put("fragment", fragmentEngine)
-
-        MethodChannel(
-            fragmentEngine.dartExecutor.binaryMessenger,
-            "partial_view"
-        ).setMethodCallHandler { call, result ->
-            when (call.method) {
-                "message_to_flutter" -> {
-                    result.success("Hello from Android")
-                }
-
-                "message_from_flutter" -> {
-                    val message = call.argument<String>("message")
-                    binding.tvMessage.text = message
-                }
-
-                "exit" -> {
-                    supportFragmentManager.findFragmentByTag("flutter_fragment")?.let {
-                        Log.d("MainActivity", "initFlutterPartialView: ")
-                        val transaction = supportFragmentManager.beginTransaction()
-                        transaction.remove(it)
-                        transaction.commit()
-                    }
-                }
-
-                else -> {}
-            }
-        }
+    override fun onDestroy() {
+        super.onDestroy()
+        FlutterEngineManager().destroy(FlutterRoutes.PartialView)
+        FlutterEngineManager().destroy(FlutterRoutes.Fullscreen)
+        FlutterEngineManager().destroy(FlutterRoutes.Weather)
+        FlutterEngineManager().destroy(FlutterRoutes.Users)
     }
 
-    private fun initFlutterFullScreen() {
-        val fullscreenEngine = FlutterEngine(this)
-        fullscreenEngine.navigationChannel.setInitialRoute("/fullscreen")
-        fullscreenEngine.dartExecutor.executeDartEntrypoint(
-            DartExecutor.DartEntrypoint.createDefault()
-        )
+    private fun warmupPartialView() {
+        val engine = FlutterEngineManager().warmup(this, FlutterRoutes.PartialView)
 
         MethodChannel(
-            fullscreenEngine.dartExecutor.binaryMessenger,
-            "fullscreen"
+            engine.dartExecutor.binaryMessenger,
+            FlutterRoutes.PartialView.name,
         ).setMethodCallHandler { call, result ->
             when (call.method) {
-                "message_to_flutter" -> {
-                    result.success("Hello from Android")
-                }
-
                 "message_from_flutter" -> {
                     val message = call.argument<String>("message")
                     binding.tvMessage.text = message
                     result.success("Message received")
                 }
-
-                else -> {}
             }
         }
+    }
 
-        FlutterEngineCache.getInstance().put("fullscreen", fullscreenEngine)
+    private fun warmupFullScreen() {
+        val engine = FlutterEngineManager().warmup(this, FlutterRoutes.Fullscreen)
+
+        MethodChannel(
+            engine.dartExecutor.binaryMessenger,
+            FlutterRoutes.Fullscreen.name,
+        ).setMethodCallHandler { call, result ->
+            when (call.method) {
+                "message_from_flutter" -> {
+                    val message = call.argument<String>("message")
+                    binding.tvMessage.text = message
+                    result.success("Message received")
+                }
+            }
+        }
     }
 
 
-    private fun initFlutterWeather() {
-        val weatherEngine = FlutterEngine(this)
-        weatherEngine.navigationChannel.setInitialRoute("/weather")
-        weatherEngine.dartExecutor.executeDartEntrypoint(
-            DartExecutor.DartEntrypoint.createDefault()
-        )
-
-        FlutterEngineCache.getInstance().put("weather", weatherEngine)
-
+    private fun warmupWeather() {
+        FlutterEngineManager().warmup(this, FlutterRoutes.Weather)
     }
+
+    private fun warmupUsers() {
+        FlutterEngineManager().warmup(this, FlutterRoutes.Users)
+    }
+
 }

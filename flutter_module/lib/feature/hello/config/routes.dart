@@ -12,8 +12,8 @@ class HelloRoutes {
 
   final routes = [
     GoRoute(
-      path: fragment,
-      builder: (context, state) => const FragmentWidget(),
+      path: partialView,
+      builder: (context, state) => const PartialViewWidget(),
     ),
     GoRoute(
       path: fullscreen,
@@ -33,7 +33,7 @@ class HelloRoutes {
     ),
   ];
 
-  static const String fragment = '/fragment';
+  static const String partialView = '/partial_view';
   static const String fullscreen = '/fullscreen';
   static const String userList = '/users';
   static const String userDetail = '/users/detail';

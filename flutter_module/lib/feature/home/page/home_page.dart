@@ -38,7 +38,7 @@ class HomeMenu extends StatelessWidget {
         ),
         ListTile(
           title: Text(S.of(context).home_menu_fragment),
-          onTap: () => context.push(HelloRoutes.fragment),
+          onTap: () => context.push(HelloRoutes.partialView),
         ),
         ListTile(
           title: Text(S.of(context).home_menu_user_list),

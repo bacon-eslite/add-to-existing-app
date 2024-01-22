@@ -16,7 +16,7 @@ class LoggerInterceptor extends Interceptor {
       'headers': options.headers,
       'body': options.data,
     };
-    Logger().i('*** Request ***\n$m');
+    Logger().d('*** Request ***\n$m');
     handler.next(options);
   }
 
@@ -31,7 +31,7 @@ class LoggerInterceptor extends Interceptor {
     if (response.isRedirect == true) {
       m['redirect'] = response.realUri;
     }
-    Logger().i('*** Response ***\n$m');
+    Logger().d('*** Response ***\n$m');
 
     handler.next(response);
   }
