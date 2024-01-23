@@ -14,6 +14,7 @@
 		3559A9A72A926F0A006E691C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3559A9A52A926F0A006E691C /* Main.storyboard */; };
 		3559A9A92A926F0B006E691C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3559A9A82A926F0B006E691C /* Assets.xcassets */; };
 		3559A9AC2A926F0B006E691C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3559A9AA2A926F0B006E691C /* LaunchScreen.storyboard */; };
+		35D321FA2B5E691100D68E44 /* FlutterEngineManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D321F92B5E691100D68E44 /* FlutterEngineManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		3559A9A82A926F0B006E691C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3559A9AB2A926F0B006E691C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3559A9AD2A926F0B006E691C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		35D321F92B5E691100D68E44 /* FlutterEngineManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlutterEngineManager.swift; sourceTree = "<group>"; };
 		8C346515163B42159E6148C2 /* Pods_myiosapp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_myiosapp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -68,6 +70,7 @@
 				3559A99F2A926F0A006E691C /* AppDelegate.swift */,
 				3559A9A12A926F0A006E691C /* SceneDelegate.swift */,
 				3559A9A32A926F0A006E691C /* ViewController.swift */,
+				35D321F92B5E691100D68E44 /* FlutterEngineManager.swift */,
 				3559A9A52A926F0A006E691C /* Main.storyboard */,
 				3559A9A82A926F0B006E691C /* Assets.xcassets */,
 				3559A9AA2A926F0B006E691C /* LaunchScreen.storyboard */,
@@ -230,6 +233,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				35D321FA2B5E691100D68E44 /* FlutterEngineManager.swift in Sources */,
 				3559A9A42A926F0A006E691C /* ViewController.swift in Sources */,
 				3559A9A02A926F0A006E691C /* AppDelegate.swift in Sources */,
 				3559A9A22A926F0A006E691C /* SceneDelegate.swift in Sources */,
