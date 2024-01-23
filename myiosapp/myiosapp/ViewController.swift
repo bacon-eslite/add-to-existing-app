@@ -19,70 +19,49 @@ class ViewController: UIViewController {
     }
 
     @IBAction func onFullscreenAction(_ sender: Any) {
-        let engine = FlutterEngine(name: "fullscreen")
-        engine.run(withEntrypoint: nil, initialRoute: "/fullscreen")
+        let engine = FlutterEngineManager.shared.warmup(tag: .Fullscreen)
         
-        FlutterMethodChannel(name: "fullscreen", binaryMessenger: engine.binaryMessenger).setMethodCallHandler { call, result in
+        FlutterMethodChannel(name: "\(FlutterRoutes.Fullscreen)", binaryMessenger: engine.binaryMessenger).setMethodCallHandler { call, result in
             switch (call.method) {
-            case "message_to_flutter":
-                result("Hello from iOS")
-                break
             case "message_from_flutter":
                 self.messageLabel.text = (call.arguments as! Dictionary<String, String>)["message"]
+                result("message received")
                 break
             default:
                 result(FlutterMethodNotImplemented)
             }
         }
         
-        
-        let vc = FlutterViewController(engine: engine, nibName: nil, bundle: nil)
+        guard let vc = FlutterEngineManager.shared.getVC(tag: .Fullscreen) else { return }
         
         present(vc, animated: true)
     }
     @IBAction func onPartialViewAction(_ sender: Any) {
-        initFragmentVC()
-    }
-    
-    func initFragmentVC() -> Void {
-        let engine = FlutterEngine(name: "fragment")
-        engine.run(withEntrypoint: nil, initialRoute: "/fragment")
+//        initFragmentVC()
+        let engine = FlutterEngineManager.shared.warmup(tag: .PartialView)
         
-        let vc = FlutterViewController(engine: engine, nibName: nil, bundle: nil)
-        
-        FlutterMethodChannel(name: "fragment", binaryMessenger: engine.binaryMessenger).setMethodCallHandler { call, result in
+        FlutterMethodChannel(name: "\(FlutterRoutes.PartialView)", binaryMessenger: engine.binaryMessenger).setMethodCallHandler { call, result in
             switch call.method {
-            case "message_to_flutter":
-                result("Hello from iOS")
-                break
             case "message_from_flutter":
                 self.messageLabel.text = (call.arguments as! Dictionary<String, String>)["message"]
-                break
-            case "exit":
-                vc.view.removeFromSuperview()
-                vc.removeFromParent()
+                result("message received")
                 break
             default:
                 result(FlutterMethodNotImplemented)
             }
         }
         
+        guard let vc = FlutterEngineManager.shared.getVC(tag: .PartialView) else {
+            print("vc is null 2")
+            return }
+        
         addChild(vc)
         
-        guard let flutterView = vc.view else { return }
+        guard let flutterView = vc.view else {
+            print("flutter view not exist")
+            return }
         
-        flutterView.translatesAutoresizingMaskIntoConstraints = false
-        
-        self.fragmentView.addSubview(flutterView)
-        
-        let constraints = [
-            flutterView.topAnchor.constraint(equalTo: self.fragmentView.topAnchor),
-                    flutterView.leadingAnchor.constraint(equalTo: self.fragmentView.leadingAnchor),
-                    flutterView.bottomAnchor.constraint(equalTo: self.fragmentView.bottomAnchor),
-                    flutterView.trailingAnchor.constraint(equalTo: self.fragmentView.trailingAnchor)
-                ]
-        
-        NSLayoutConstraint.activate(constraints)
+        FlutterEngineManager.attachView(child: flutterView, parent: self.fragmentView)
         
         vc.didMove(toParent: self)
         

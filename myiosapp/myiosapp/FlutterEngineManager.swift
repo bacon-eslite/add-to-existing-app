@@ -1,7 +1,9 @@
 import Foundation
 import Flutter
 
-class FlutterEngineManager {
+class FlutterEngineManager: NSObject {
+    
+    static let shared = FlutterEngineManager()
     
     private let cachedEngines = NSCache<NSString, FlutterEngine>()
     
@@ -10,7 +12,10 @@ class FlutterEngineManager {
     }
     
     func get(engineId: String) -> FlutterEngine? {
-        return cachedEngines.object(forKey: NSString(string: engineId))
+        print("get \(engineId)")
+        let e = cachedEngines.object(forKey: NSString(string: engineId))
+        print("e: \(e)")
+        return e
     }
     
     func destory(engineId: String) -> Void {
@@ -22,14 +27,16 @@ class FlutterEngineManager {
     
     func warmup(tag: FlutterRoutes) -> FlutterEngine {
         print("tag: \(tag)")
+        
         let e = FlutterEngine(name: "\(tag)")
         e.run(withEntrypoint: nil, initialRoute: tag.rawValue)
-        
         cachedEngines.setObject(e, forKey: NSString(string: "\(tag)"))
+        initDefaultMethodChannel(tag: tag)
         return e
     }
     
     func getVC(tag: FlutterRoutes) -> FlutterViewController? {
+        print("getVC: \(tag)")
         guard let e = get(engineId: "\(tag)") else { return nil }
         return FlutterViewController(engine: e, nibName: nil, bundle: nil)
     }
@@ -37,12 +44,17 @@ class FlutterEngineManager {
     private func initDefaultMethodChannel(tag: FlutterRoutes) {
         guard let e = get(engineId: "\(tag)") else { return }
         
-        FlutterMethodChannel(name: "\(tag)", binaryMessenger: e.binaryMessenger).setMethodCallHandler { call, result in
+        FlutterMethodChannel(name: "\(FlutterRoutes.Main)", binaryMessenger: e.binaryMessenger).setMethodCallHandler { call, result in
+            print("method: \(call.method)")
             switch (call.method) {
             case "message_to_flutter":
                 result("Hello from iOS")
                 break
             case "exit":
+                if e.viewController?.isBeingPresented ?? false {
+                    e.viewController?.navigationController?.popViewController(animated: true)
+                    return
+                }
                 e.viewController?.view.removeFromSuperview()
                 e.viewController?.removeFromParent()
                 result("exit")
